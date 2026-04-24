@@ -43,6 +43,8 @@ export type Photo = {
   caption: string;
   rot: number;
   tint: string;
+  src: string;
+  objectPosition: string;
 };
 
 export type LiveSite = {
@@ -264,14 +266,90 @@ export const FACTS: string[] = [
 ];
 
 export const PHOTOS: Photo[] = [
-  { caption: 'glasgow mornings', rot: -4, tint: '#A78BFA' },
-  { caption: 'async standup', rot: 3, tint: '#FF6B9D' },
-  { caption: 'ascent offsite', rot: -2, tint: '#6EE7B7' },
-  { caption: 'graduation day', rot: 5, tint: '#FBBF24' },
-  { caption: 'late night ship', rot: -3, tint: '#67E8F9' },
-  { caption: 'figma → prod', rot: 2, tint: '#F0ABFC' },
-  { caption: 'client workshop', rot: -5, tint: '#FB923C' },
-  { caption: 'weekend tinker', rot: 4, tint: '#A78BFA' },
+  {
+    caption: 'graduating class · ’24',
+    rot: -4,
+    tint: '#A78BFA',
+    src: '/photos/graduating-class.jpeg',
+    objectPosition: '42% 50%',
+  },
+  {
+    caption: 'chem-eng ball · ’25',
+    rot: 3,
+    tint: '#FF6B9D',
+    src: '/photos/chem-eng-ball.jpeg',
+    objectPosition: '38% 40%',
+  },
+  {
+    caption: 'italy summer · ’25',
+    rot: -2,
+    tint: '#6EE7B7',
+    src: '/photos/italy-summer.jpeg',
+    objectPosition: '50% 30%',
+  },
+  {
+    caption: 'the hooding · ’24',
+    rot: 5,
+    tint: '#FBBF24',
+    src: '/photos/graduation.jpeg',
+    objectPosition: '38% 65%',
+  },
+  {
+    caption: 'lisbon, at sunset',
+    rot: -3,
+    tint: '#67E8F9',
+    src: '/photos/boat-trip-lisbon.jpeg',
+    objectPosition: '40% 50%',
+  },
+  {
+    caption: 'home, just being',
+    rot: 2,
+    tint: '#F0ABFC',
+    src: '/photos/casual-portrait.jpeg',
+    objectPosition: '50% 35%',
+  },
+  {
+    caption: 'castle hike',
+    rot: -5,
+    tint: '#FB923C',
+    src: '/photos/abandoned-castle.jpeg',
+    objectPosition: '50% 50%',
+  },
+  {
+    caption: 'scotland trails',
+    rot: 4,
+    tint: '#A78BFA',
+    src: '/photos/hiking-scotland.jpeg',
+    objectPosition: '35% 45%',
+  },
+  {
+    caption: 'me + best friend',
+    rot: -3,
+    tint: '#FF6B9D',
+    src: '/photos/best-friend.jpg',
+    objectPosition: '45% 50%',
+  },
+  {
+    caption: 'drinks with friends',
+    rot: 3,
+    tint: '#6EE7B7',
+    src: '/photos/drinks-friends.jpeg',
+    objectPosition: '60% 60%',
+  },
+  {
+    caption: 'party people',
+    rot: -2,
+    tint: '#FBBF24',
+    src: '/photos/party-friends.jpeg',
+    objectPosition: '50% 60%',
+  },
+  {
+    caption: 'lisbon mornings',
+    rot: 4,
+    tint: '#67E8F9',
+    src: '/photos/lisbon-morning.jpeg',
+    objectPosition: '50% 50%',
+  },
 ];
 
 export const LIVE_SITES: LiveSite[] = [

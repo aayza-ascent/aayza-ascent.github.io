@@ -3,36 +3,6 @@
 import { useState, type CSSProperties } from 'react';
 import { PHOTOS } from '@/lib/data';
 
-function PhotoPlaceholder({ tint, i }: { tint: string; i: number }) {
-  return (
-    <svg viewBox="0 0 200 200" width="100%" height="100%" preserveAspectRatio="xMidYMid slice">
-      <defs>
-        <linearGradient id={`g-${i}`} x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0" stopColor={tint} stopOpacity="0.55" />
-          <stop offset="1" stopColor={tint} stopOpacity="0.85" />
-        </linearGradient>
-        <pattern id={`stripe-${i}`} patternUnits="userSpaceOnUse" width="8" height="8" patternTransform="rotate(45)">
-          <rect width="4" height="8" fill="rgba(255,255,255,0.08)" />
-        </pattern>
-      </defs>
-      <rect width="200" height="200" fill={`url(#g-${i})`} />
-      <rect width="200" height="200" fill={`url(#stripe-${i})`} />
-      <circle cx={60 + (i * 17) % 80} cy={70 + (i * 23) % 60} r="22" fill="rgba(255,255,255,.3)" />
-      <text
-        x="100"
-        y="178"
-        textAnchor="middle"
-        fontFamily="JetBrains Mono, monospace"
-        fontSize="9"
-        fill="rgba(0,0,0,.5)"
-        letterSpacing="0.12em"
-      >
-        PHOTO · {String(i + 1).padStart(2, '0')}
-      </text>
-    </svg>
-  );
-}
-
 export default function Photos() {
   const [lightbox, setLightbox] = useState<number | null>(null);
 
@@ -63,7 +33,13 @@ export default function Photos() {
               aria-label={`Open photo: ${p.caption}`}
             >
               <div className="polaroid-img">
-                <PhotoPlaceholder tint={p.tint} i={i} />
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src={p.src}
+                  alt={p.caption}
+                  loading="lazy"
+                  style={{ objectPosition: p.objectPosition }}
+                />
               </div>
               <div className="polaroid-cap">{p.caption}</div>
               <div className="tape" aria-hidden />
@@ -89,7 +65,12 @@ export default function Photos() {
           </button>
           <div className="lb-frame" onClick={(e) => e.stopPropagation()}>
             <div className="lb-img">
-              <PhotoPlaceholder tint={PHOTOS[lightbox].tint} i={lightbox} />
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src={PHOTOS[lightbox].src}
+                alt={PHOTOS[lightbox].caption}
+                style={{ objectPosition: PHOTOS[lightbox].objectPosition }}
+              />
             </div>
             <div className="lb-cap serif">{PHOTOS[lightbox].caption}</div>
           </div>
@@ -136,6 +117,18 @@ export default function Photos() {
           border-radius: 2px;
           overflow: hidden;
           background: var(--tint);
+        }
+        .polaroid-img :global(img) {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          display: block;
+        }
+        .lb-img :global(img) {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          display: block;
         }
         .polaroid-cap {
           position: absolute;
