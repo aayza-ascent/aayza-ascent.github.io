@@ -78,7 +78,7 @@ export default function Hero() {
 
       <div className="container hero-inner">
         <div className="hero-top row">
-          <span
+          {/* <span
             className="chip"
             style={{
               background: "rgba(110,231,183,.12)",
@@ -97,7 +97,7 @@ export default function Hero() {
               }}
             />
             available for select work
-          </span>
+          </span> */}
           <span className="chip mono">glasgow · scotland · remote</span>
         </div>
 
