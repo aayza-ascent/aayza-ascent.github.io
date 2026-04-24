@@ -99,7 +99,7 @@ function Hero() {
                   "0 0 0 3px rgba(110,231,183,.2), 0 0 12px rgba(110,231,183,.6)",
               }}
             />
-            Unavailable
+            Nice to meet you!
           </span>
           <span className="chip mono">glasgow · scotland · remote</span>
         </div>
