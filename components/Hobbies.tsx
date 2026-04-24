@@ -1,13 +1,13 @@
-'use client';
+"use client";
 
-import { useState } from 'react';
-import { HOBBIES, FACTS, type Hobby } from '@/lib/data';
+import { useState } from "react";
+import { HOBBIES, FACTS, type Hobby } from "@/lib/data";
 
 function FlipCard({ h }: { h: Hobby }) {
   const [flipped, setFlipped] = useState(false);
   return (
     <button
-      className={`flip ${flipped ? 'flipped' : ''}`}
+      className={`flip ${flipped ? "flipped" : ""}`}
       onClick={() => setFlipped(!flipped)}
       aria-pressed={flipped}
     >
@@ -15,7 +15,9 @@ function FlipCard({ h }: { h: Hobby }) {
         <div className="face front">
           <div
             className="emoji-wrap"
-            style={{ background: `radial-gradient(circle, ${h.color}44, transparent)` }}
+            style={{
+              background: `radial-gradient(circle, ${h.color}44, transparent)`,
+            }}
           >
             <div className="emoji">{h.emoji}</div>
           </div>
@@ -30,10 +32,12 @@ function FlipCard({ h }: { h: Hobby }) {
         </div>
         <div
           className="face back"
-          style={{ background: `linear-gradient(145deg, ${h.color}, ${h.color}CC)` }}
+          style={{
+            background: `linear-gradient(145deg, ${h.color}, ${h.color}CC)`,
+          }}
         >
           <p>{h.back}</p>
-          <div className="flip-hint mono" style={{ color: 'rgba(0,0,0,.45)' }}>
+          <div className="flip-hint mono" style={{ color: "rgba(0,0,0,.45)" }}>
             tap to flip back
           </div>
         </div>
@@ -70,7 +74,9 @@ function FlipCard({ h }: { h: Hobby }) {
           backface-visibility: hidden;
           -webkit-backface-visibility: hidden;
           border: 0.5px solid rgba(255, 255, 255, 0.08);
-          box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+          box-shadow:
+            10px 10px 30px rgba(0, 0, 0, 0.4),
+            inset 0 1px 0 rgba(255, 255, 255, 0.05);
           text-align: left;
         }
         .front {
@@ -82,7 +88,7 @@ function FlipCard({ h }: { h: Hobby }) {
           color: #0e0b1a;
         }
         .back :global(p) {
-          font-family: 'Instrument Serif', serif;
+          font-family: "Instrument Serif", serif;
           font-size: 22px;
           line-height: 1.25;
           font-style: italic;
@@ -140,8 +146,15 @@ export default function Hobbies() {
         <h2 className="section-title">
           When I&rsquo;m <em className="serif">not at the keyboard</em>.
         </h2>
-        <p style={{ maxWidth: 560, color: 'var(--ink-soft)', margin: '12px 0 48px' }}>
-          Six things that take up most of my weekends. Tap any card — the back has the actual specifics.
+        <p
+          style={{
+            maxWidth: 560,
+            color: "var(--ink-soft)",
+            margin: "12px 0 48px",
+          }}
+        >
+          Six things that take up most of my weekends. Tap any card - the back
+          has the actual specifics.
         </p>
 
         <div className="flip-grid">
@@ -155,12 +168,12 @@ export default function Hobbies() {
             <div className="eyebrow" style={{ marginBottom: 8 }}>
               Fun fact generator
             </div>
-            <div className={`fact serif ${spinning ? 'spin' : ''}`} key={fact}>
+            <div className={`fact serif ${spinning ? "spin" : ""}`} key={fact}>
               {fact}
             </div>
           </div>
           <button className="btn btn-primary shuffle" onClick={randomize}>
-            <span className={`shuf-icon ${spinning ? 'spin' : ''}`}>⇄</span>
+            <span className={`shuf-icon ${spinning ? "spin" : ""}`}>⇄</span>
             New fact
           </button>
         </div>
@@ -180,7 +193,11 @@ export default function Hobbies() {
           gap: 24px;
           padding: 28px 32px;
           flex-wrap: wrap;
-          background: linear-gradient(135deg, rgba(167, 139, 250, 0.1), rgba(255, 138, 184, 0.08)) !important;
+          background: linear-gradient(
+            135deg,
+            rgba(167, 139, 250, 0.1),
+            rgba(255, 138, 184, 0.08)
+          ) !important;
           border: 0.5px solid rgba(167, 139, 250, 0.2) !important;
         }
         .facts-left {

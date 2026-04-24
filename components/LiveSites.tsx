@@ -1,7 +1,7 @@
-'use client';
+"use client";
 
-import { useState, type CSSProperties } from 'react';
-import { LIVE_SITES } from '@/lib/data';
+import { useState, type CSSProperties } from "react";
+import { LIVE_SITES } from "@/lib/data";
 
 export default function LiveSites() {
   const [hover, setHover] = useState<number | null>(null);
@@ -13,8 +13,15 @@ export default function LiveSites() {
         <h2 className="section-title">
           Live <em className="serif">in production.</em>
         </h2>
-        <p style={{ maxWidth: 640, color: 'var(--ink-soft)', margin: '12px 0 40px' }}>
-          Real sites, real traffic. Click any card to visit — they open in a new tab so you can keep scrolling here.
+        <p
+          style={{
+            maxWidth: 640,
+            color: "var(--ink-soft)",
+            margin: "12px 0 40px",
+          }}
+        >
+          Real projects out in the wild. Click any card to visit - they open in
+          a new tab so you can keep scrolling here.
         </p>
 
         <div className="live-grid">
@@ -29,7 +36,7 @@ export default function LiveSites() {
               onMouseLeave={() => setHover(null)}
               style={
                 {
-                  '--tint': s.tint,
+                  "--tint": s.tint,
                   boxShadow:
                     hover === i
                       ? `0 30px 60px ${s.tint}33, 0 0 0 1px ${s.tint}55, inset 0 1px 0 rgba(255,255,255,.08)`
@@ -40,28 +47,37 @@ export default function LiveSites() {
               <div className="live-preview" style={{ background: s.preview }}>
                 <div className="live-chrome">
                   <div className="chrome-dots">
-                    <span style={{ background: '#FF5F57' }} />
-                    <span style={{ background: '#FEBC2E' }} />
-                    <span style={{ background: '#28C840' }} />
+                    <span style={{ background: "#FF5F57" }} />
+                    <span style={{ background: "#FEBC2E" }} />
+                    <span style={{ background: "#28C840" }} />
                   </div>
                   <div className="chrome-url mono">
                     <span className="chrome-lock">🔒</span>
-                    {s.url.replace(/^https?:\/\//, '')}
+                    {s.url.replace(/^https?:\/\//, "")}
                   </div>
                 </div>
                 <div
                   className="live-preview-tag mono"
-                  style={{ background: `${s.tint}22`, color: '#fff', borderColor: `${s.tint}66` }}
+                  style={{
+                    background: `${s.tint}22`,
+                    color: "#fff",
+                    borderColor: `${s.tint}66`,
+                  }}
                 >
                   ● {s.tag}
                 </div>
-                <div className="live-preview-glyph serif">{s.title.charAt(0)}</div>
+                <div className="live-preview-glyph serif">
+                  {s.title.charAt(0)}
+                </div>
               </div>
 
               <div className="live-body">
                 <div className="live-head">
                   <div>
-                    <div className="live-subtitle mono" style={{ color: s.tint }}>
+                    <div
+                      className="live-subtitle mono"
+                      style={{ color: s.tint }}
+                    >
                       {s.subtitle}
                     </div>
                     <h3 className="live-title serif">{s.title}</h3>
@@ -81,7 +97,10 @@ export default function LiveSites() {
                 <div className="live-stats">
                   {s.stats.map((st) => (
                     <div key={st.label} className="live-stat">
-                      <span className="live-stat-value serif" style={{ color: s.tint }}>
+                      <span
+                        className="live-stat-value serif"
+                        style={{ color: s.tint }}
+                      >
                         {st.value}
                       </span>
                       <span className="live-stat-label mono">{st.label}</span>
@@ -116,7 +135,9 @@ export default function LiveSites() {
           border: 0.5px solid rgba(255, 255, 255, 0.06);
           text-decoration: none;
           color: inherit;
-          transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.4s ease;
+          transition:
+            transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1),
+            box-shadow 0.4s ease;
           cursor: pointer;
         }
         .live-card:hover {
@@ -130,13 +151,17 @@ export default function LiveSites() {
           overflow: hidden;
         }
         .live-preview::before {
-          content: '';
+          content: "";
           position: absolute;
           inset: 0;
-          background: radial-gradient(ellipse at 30% 20%, rgba(255, 255, 255, 0.25), transparent 60%);
+          background: radial-gradient(
+            ellipse at 30% 20%,
+            rgba(255, 255, 255, 0.25),
+            transparent 60%
+          );
         }
         .live-preview::after {
-          content: '';
+          content: "";
           position: absolute;
           bottom: 0;
           left: 0;
@@ -291,7 +316,12 @@ export default function LiveSites() {
           left: -100%;
           width: 60%;
           height: 100%;
-          background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.06), transparent);
+          background: linear-gradient(
+            to right,
+            transparent,
+            rgba(255, 255, 255, 0.06),
+            transparent
+          );
           transform: skewX(-20deg);
           pointer-events: none;
           transition: left 0.8s ease;

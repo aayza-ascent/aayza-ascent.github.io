@@ -1,38 +1,82 @@
-'use client';
+"use client";
 
-import { useEffect, useRef, useState, type MouseEvent, type TouchEvent } from 'react';
+import {
+  useEffect,
+  useRef,
+  useState,
+  type MouseEvent,
+  type TouchEvent,
+} from "react";
 
 const GRID_COLS = 48;
 const GRID_ROWS = 24;
 const COLORS = [
-  '#FF6B9D',
-  '#A78BFA',
-  '#6EE7B7',
-  '#FBBF24',
-  '#67E8F9',
-  '#FB923C',
-  '#F472B6',
-  '#C084FC',
-  '#34D399',
-  '#F0ABFC',
-  '#FFFFFF',
-  '#1A1630',
+  "#FF6B9D",
+  "#A78BFA",
+  "#6EE7B7",
+  "#FBBF24",
+  "#67E8F9",
+  "#FB923C",
+  "#F472B6",
+  "#C084FC",
+  "#34D399",
+  "#F0ABFC",
+  "#FFFFFF",
+  "#1A1630",
 ];
 
 const SEED: [number, number, string][] = [
-  [6, 10, '#A78BFA'], [6, 11, '#A78BFA'], [7, 9, '#A78BFA'], [7, 12, '#A78BFA'],
-  [8, 8, '#A78BFA'], [8, 9, '#A78BFA'], [8, 10, '#A78BFA'], [8, 11, '#A78BFA'], [8, 12, '#A78BFA'], [8, 13, '#A78BFA'],
-  [9, 8, '#A78BFA'], [9, 13, '#A78BFA'], [10, 8, '#A78BFA'], [10, 13, '#A78BFA'],
-  [6, 16, '#FF6B9D'], [6, 17, '#FF6B9D'], [7, 15, '#FF6B9D'], [7, 18, '#FF6B9D'],
-  [8, 14, '#FF6B9D'], [8, 15, '#FF6B9D'], [8, 16, '#FF6B9D'], [8, 17, '#FF6B9D'], [8, 18, '#FF6B9D'], [8, 19, '#FF6B9D'],
-  [9, 14, '#FF6B9D'], [9, 19, '#FF6B9D'], [10, 14, '#FF6B9D'], [10, 19, '#FF6B9D'],
-  [14, 30, '#FF6B9D'], [14, 32, '#FF6B9D'],
-  [15, 29, '#FF6B9D'], [15, 30, '#FF6B9D'], [15, 31, '#FF6B9D'], [15, 32, '#FF6B9D'], [15, 33, '#FF6B9D'],
-  [16, 29, '#FF6B9D'], [16, 30, '#FF6B9D'], [16, 31, '#FF6B9D'], [16, 32, '#FF6B9D'], [16, 33, '#FF6B9D'],
-  [17, 30, '#FF6B9D'], [17, 31, '#FF6B9D'], [17, 32, '#FF6B9D'],
-  [18, 31, '#FF6B9D'],
-  [2, 4, '#FBBF24'], [3, 5, '#FBBF24'], [2, 6, '#FBBF24'],
-  [19, 42, '#6EE7B7'], [20, 41, '#6EE7B7'], [20, 43, '#6EE7B7'], [21, 42, '#6EE7B7'],
+  [6, 10, "#A78BFA"],
+  [6, 11, "#A78BFA"],
+  [7, 9, "#A78BFA"],
+  [7, 12, "#A78BFA"],
+  [8, 8, "#A78BFA"],
+  [8, 9, "#A78BFA"],
+  [8, 10, "#A78BFA"],
+  [8, 11, "#A78BFA"],
+  [8, 12, "#A78BFA"],
+  [8, 13, "#A78BFA"],
+  [9, 8, "#A78BFA"],
+  [9, 13, "#A78BFA"],
+  [10, 8, "#A78BFA"],
+  [10, 13, "#A78BFA"],
+  [6, 16, "#FF6B9D"],
+  [6, 17, "#FF6B9D"],
+  [7, 15, "#FF6B9D"],
+  [7, 18, "#FF6B9D"],
+  [8, 14, "#FF6B9D"],
+  [8, 15, "#FF6B9D"],
+  [8, 16, "#FF6B9D"],
+  [8, 17, "#FF6B9D"],
+  [8, 18, "#FF6B9D"],
+  [8, 19, "#FF6B9D"],
+  [9, 14, "#FF6B9D"],
+  [9, 19, "#FF6B9D"],
+  [10, 14, "#FF6B9D"],
+  [10, 19, "#FF6B9D"],
+  [14, 30, "#FF6B9D"],
+  [14, 32, "#FF6B9D"],
+  [15, 29, "#FF6B9D"],
+  [15, 30, "#FF6B9D"],
+  [15, 31, "#FF6B9D"],
+  [15, 32, "#FF6B9D"],
+  [15, 33, "#FF6B9D"],
+  [16, 29, "#FF6B9D"],
+  [16, 30, "#FF6B9D"],
+  [16, 31, "#FF6B9D"],
+  [16, 32, "#FF6B9D"],
+  [16, 33, "#FF6B9D"],
+  [17, 30, "#FF6B9D"],
+  [17, 31, "#FF6B9D"],
+  [17, 32, "#FF6B9D"],
+  [18, 31, "#FF6B9D"],
+  [2, 4, "#FBBF24"],
+  [3, 5, "#FBBF24"],
+  [2, 6, "#FBBF24"],
+  [19, 42, "#6EE7B7"],
+  [20, 41, "#6EE7B7"],
+  [20, 43, "#6EE7B7"],
+  [21, 42, "#6EE7B7"],
 ];
 
 type PixelMap = Record<string, string>;
@@ -48,7 +92,7 @@ function seedGrid(): PixelMap {
 export default function Guestbook() {
   const [pixels, setPixels] = useState<PixelMap>(() => seedGrid());
   const [color, setColor] = useState(COLORS[0]);
-  const [tool, setTool] = useState<'paint' | 'erase'>('paint');
+  const [tool, setTool] = useState<"paint" | "erase">("paint");
   const [dragging, setDragging] = useState(false);
   const [recentCount, setRecentCount] = useState(0);
   const [coords, setCoords] = useState<{ r: number; c: number } | null>(null);
@@ -56,17 +100,17 @@ export default function Guestbook() {
 
   useEffect(() => {
     try {
-      const raw = localStorage.getItem('guestbook-v2');
+      const raw = localStorage.getItem("guestbook-v2");
       if (raw) setPixels(JSON.parse(raw));
     } catch {}
     try {
-      setRecentCount(Number(localStorage.getItem('gb-session-count') || 0));
+      setRecentCount(Number(localStorage.getItem("gb-session-count") || 0));
     } catch {}
   }, []);
 
   const save = (next: PixelMap) => {
     try {
-      localStorage.setItem('guestbook-v2', JSON.stringify(next));
+      localStorage.setItem("guestbook-v2", JSON.stringify(next));
     } catch {}
   };
 
@@ -77,14 +121,14 @@ export default function Guestbook() {
     const key = `${r},${c}`;
     setPixels((prev) => {
       const next = { ...prev };
-      if (tool === 'erase') delete next[key];
+      if (tool === "erase") delete next[key];
       else next[key] = color;
       save(next);
       return next;
     });
     try {
-      const n = Number(localStorage.getItem('gb-session-count') || 0) + 1;
-      localStorage.setItem('gb-session-count', String(n));
+      const n = Number(localStorage.getItem("gb-session-count") || 0) + 1;
+      localStorage.setItem("gb-session-count", String(n));
       setRecentCount(n);
     } catch {}
   };
@@ -126,7 +170,7 @@ export default function Guestbook() {
   const handleUp = () => setDragging(false);
 
   const clearAll = () => {
-    if (!confirm('Clear the whole canvas?')) return;
+    if (!confirm("Clear the whole canvas?")) return;
     setPixels({});
     save({});
   };
@@ -142,11 +186,17 @@ export default function Guestbook() {
       <div className="container">
         <div className="eyebrow">08 / Leave a mark</div>
         <h2 className="section-title">
-          The <em className="serif">guestbook</em> — pixel edition.
+          The <em className="serif">guestbook</em> - pixel edition.
         </h2>
-        <p style={{ maxWidth: 640, color: 'var(--ink-soft)', margin: '12px 0 40px' }}>
-          Scroll-sized crowd art. Pick a color, drag to paint. Your strokes save to this browser — bring a friend and
-          build something together.
+        <p
+          style={{
+            maxWidth: 640,
+            color: "var(--ink-soft)",
+            margin: "12px 0 40px",
+          }}
+        >
+          Scroll-sized crowd art. Pick a color, drag to paint. Your strokes save
+          to this browser - bring a friend and build something together.
         </p>
 
         <div className="gb-wrap">
@@ -156,14 +206,17 @@ export default function Guestbook() {
                 {COLORS.map((c) => (
                   <button
                     key={c}
-                    className={`gb-swatch ${color === c && tool === 'paint' ? 'active' : ''}`}
+                    className={`gb-swatch ${color === c && tool === "paint" ? "active" : ""}`}
                     style={{
                       background: c,
-                      borderColor: color === c && tool === 'paint' ? 'var(--ink)' : 'transparent',
+                      borderColor:
+                        color === c && tool === "paint"
+                          ? "var(--ink)"
+                          : "transparent",
                     }}
                     onClick={() => {
                       setColor(c);
-                      setTool('paint');
+                      setTool("paint");
                     }}
                     aria-label={`Color ${c}`}
                   />
@@ -171,16 +224,24 @@ export default function Guestbook() {
               </div>
               <div className="gb-tool-btns">
                 <button
-                  className={`gb-tool ${tool === 'erase' ? 'active' : ''}`}
-                  onClick={() => setTool('erase')}
+                  className={`gb-tool ${tool === "erase" ? "active" : ""}`}
+                  onClick={() => setTool("erase")}
                   title="Eraser"
                 >
                   ◌ Erase
                 </button>
-                <button className="gb-tool" onClick={resetToSeed} title="Reset to default">
+                <button
+                  className="gb-tool"
+                  onClick={resetToSeed}
+                  title="Reset to default"
+                >
                   ↻ Reset
                 </button>
-                <button className="gb-tool danger" onClick={clearAll} title="Clear all">
+                <button
+                  className="gb-tool danger"
+                  onClick={clearAll}
+                  title="Clear all"
+                >
                   ⌫ Clear
                 </button>
               </div>
@@ -200,7 +261,7 @@ export default function Guestbook() {
             onTouchStart={handleTouchStart}
             onTouchMove={handleTouchMove}
             onTouchEnd={handleUp}
-            style={{ cursor: tool === 'erase' ? 'cell' : 'crosshair' }}
+            style={{ cursor: tool === "erase" ? "cell" : "crosshair" }}
           >
             <div
               className="gb-pixels"
@@ -213,19 +274,31 @@ export default function Guestbook() {
                 const r = Math.floor(i / GRID_COLS);
                 const c = i % GRID_COLS;
                 const col = pixels[`${r},${c}`];
-                return <div key={i} className="gb-cell" style={{ background: col || 'transparent' }} />;
+                return (
+                  <div
+                    key={i}
+                    className="gb-cell"
+                    style={{ background: col || "transparent" }}
+                  />
+                );
               })}
             </div>
             <div className="gb-ruler gb-ruler-x">
               {[0, 12, 24, 36, 47].map((n) => (
-                <span key={n} style={{ left: `${(n / (GRID_COLS - 1)) * 100}%` }}>
+                <span
+                  key={n}
+                  style={{ left: `${(n / (GRID_COLS - 1)) * 100}%` }}
+                >
                   {n}
                 </span>
               ))}
             </div>
             <div className="gb-ruler gb-ruler-y">
               {[0, 8, 16, 23].map((n) => (
-                <span key={n} style={{ top: `${(n / (GRID_ROWS - 1)) * 100}%` }}>
+                <span
+                  key={n}
+                  style={{ top: `${(n / (GRID_ROWS - 1)) * 100}%` }}
+                >
                   {n}
                 </span>
               ))}
@@ -239,14 +312,19 @@ export default function Guestbook() {
             </div>
             <div className="gb-stat">
               <span className="mono gb-stat-label">YOUR STROKES</span>
-              <span className="serif gb-stat-value" style={{ color: 'var(--mint)' }}>
+              <span
+                className="serif gb-stat-value"
+                style={{ color: "var(--mint)" }}
+              >
                 {recentCount}
               </span>
             </div>
             <div className="gb-stat">
               <span className="mono gb-stat-label">CURSOR</span>
               <span className="mono gb-stat-value-sm">
-                {coords ? `(${String(coords.c).padStart(2, '0')}, ${String(coords.r).padStart(2, '0')})` : '—'}
+                {coords
+                  ? `(${String(coords.c).padStart(2, "0")}, ${String(coords.r).padStart(2, "0")})`
+                  : "-"}
               </span>
             </div>
             <div className="gb-stat">
@@ -254,8 +332,11 @@ export default function Guestbook() {
               <span
                 className="gb-stat-swatch"
                 style={{
-                  background: tool === 'erase' ? 'transparent' : color,
-                  border: tool === 'erase' ? '2px dashed var(--muted)' : `2px solid ${color}`,
+                  background: tool === "erase" ? "transparent" : color,
+                  border:
+                    tool === "erase"
+                      ? "2px dashed var(--muted)"
+                      : `2px solid ${color}`,
                 }}
               />
             </div>
@@ -316,7 +397,7 @@ export default function Guestbook() {
           padding: 8px 14px;
           border-radius: 8px;
           cursor: pointer;
-          font-family: 'JetBrains Mono', monospace;
+          font-family: "JetBrains Mono", monospace;
           font-size: 11px;
           transition: all 0.2s ease;
         }
@@ -341,7 +422,9 @@ export default function Guestbook() {
           border-radius: 16px;
           overflow: hidden;
           background: linear-gradient(145deg, #0a0716, #14102a);
-          box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.06), inset 0 2px 20px rgba(0, 0, 0, 0.5),
+          box-shadow:
+            inset 0 0 0 1px rgba(255, 255, 255, 0.06),
+            inset 0 2px 20px rgba(0, 0, 0, 0.5),
             0 20px 60px rgba(0, 0, 0, 0.4);
           touch-action: none;
           user-select: none;
@@ -363,7 +446,7 @@ export default function Guestbook() {
         .gb-ruler {
           position: absolute;
           pointer-events: none;
-          font-family: 'JetBrains Mono', monospace;
+          font-family: "JetBrains Mono", monospace;
           font-size: 8px;
           color: var(--muted);
         }

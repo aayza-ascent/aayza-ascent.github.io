@@ -151,10 +151,10 @@ function Hero() {
         {/* Stat strip */}
         <div className="hero-stats">
           {[
-            ["7", "years shipping"],
+            ["6.5", "years shipping"],
             ["1st", "class honours"],
             ["100%", "remote since '20"],
-            ["AWS", "cloud practitioner"],
+            ["100%", "outgoing, funny, and humble (self-rated)"],
           ].map(([n, l], i) => (
             <div key={i} className="stat">
               <div className="stat-n serif">{n}</div>

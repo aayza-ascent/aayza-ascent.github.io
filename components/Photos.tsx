@@ -1,7 +1,7 @@
-'use client';
+"use client";
 
-import { useState, type CSSProperties } from 'react';
-import { PHOTOS } from '@/lib/data';
+import { useState, type CSSProperties } from "react";
+import { PHOTOS } from "@/lib/data";
 
 export default function Photos() {
   const [lightbox, setLightbox] = useState<number | null>(null);
@@ -13,8 +13,15 @@ export default function Photos() {
         <h2 className="section-title">
           A little <em className="serif">photo wall</em>.
         </h2>
-        <p style={{ maxWidth: 560, color: 'var(--ink-soft)', margin: '12px 0 48px' }}>
-          Mostly shot on a Pentax K1000, occasionally phone. Click any polaroid to enlarge — hover to unpin from the wall.
+        <p
+          style={{
+            maxWidth: 560,
+            color: "var(--ink-soft)",
+            margin: "12px 0 48px",
+          }}
+        >
+          Mostly shot on a Pentax K1000, occasionally phone. Click any polaroid
+          to enlarge - hover to unpin from the wall.
         </p>
 
         <div className="polaroids">
@@ -24,8 +31,8 @@ export default function Photos() {
               className="polaroid"
               style={
                 {
-                  '--rot': `${p.rot}deg`,
-                  '--tint': p.tint,
+                  "--rot": `${p.rot}deg`,
+                  "--tint": p.tint,
                   zIndex: i,
                 } as CSSProperties
               }
@@ -49,8 +56,17 @@ export default function Photos() {
       </div>
 
       {lightbox !== null && (
-        <div className="lightbox" onClick={() => setLightbox(null)} role="dialog" aria-modal="true">
-          <button className="lb-close" onClick={() => setLightbox(null)} aria-label="Close">
+        <div
+          className="lightbox"
+          onClick={() => setLightbox(null)}
+          role="dialog"
+          aria-modal="true"
+        >
+          <button
+            className="lb-close"
+            onClick={() => setLightbox(null)}
+            aria-label="Close"
+          >
             ×
           </button>
           <button
@@ -102,14 +118,20 @@ export default function Photos() {
           border-radius: 4px;
           cursor: pointer;
           position: relative;
-          box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5), 0 2px 4px rgba(0, 0, 0, 0.3);
+          box-shadow:
+            0 20px 40px rgba(0, 0, 0, 0.5),
+            0 2px 4px rgba(0, 0, 0, 0.3);
           transform: rotate(var(--rot)) translateY(0);
-          transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.4s ease;
+          transition:
+            transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1),
+            box-shadow 0.4s ease;
           text-align: left;
         }
         .polaroid:hover {
           transform: rotate(0deg) translateY(-8px) scale(1.03);
-          box-shadow: 0 30px 60px rgba(167, 139, 250, 0.3), 0 4px 10px rgba(0, 0, 0, 0.4);
+          box-shadow:
+            0 30px 60px rgba(167, 139, 250, 0.3),
+            0 4px 10px rgba(0, 0, 0, 0.4);
           z-index: 20 !important;
         }
         .polaroid-img {
@@ -136,7 +158,7 @@ export default function Photos() {
           right: 0;
           bottom: 12px;
           text-align: center;
-          font-family: 'Caveat', 'Instrument Serif', cursive;
+          font-family: "Caveat", "Instrument Serif", cursive;
           font-style: italic;
           font-size: 18px;
           color: #4a4538;

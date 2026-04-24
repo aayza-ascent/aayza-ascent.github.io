@@ -1,13 +1,24 @@
-'use client';
+"use client";
 
-import { useEffect, useState } from 'react';
-import { PROJECTS, type Project, type ProjectIconName } from '@/lib/data';
+import { useEffect, useState } from "react";
+import { PROJECTS, type Project, type ProjectIconName } from "@/lib/data";
 
-function ProjectIcon({ name, color }: { name: ProjectIconName; color: string }) {
+function ProjectIcon({
+  name,
+  color,
+}: {
+  name: ProjectIconName;
+  color: string;
+}) {
   const size = 88;
-  const common = { width: size, height: size, viewBox: '0 0 64 64', fill: 'none' as const };
+  const common = {
+    width: size,
+    height: size,
+    viewBox: "0 0 64 64",
+    fill: "none" as const,
+  };
   switch (name) {
-    case 'lumen':
+    case "lumen":
       return (
         <svg {...common}>
           <circle cx="32" cy="32" r="22" fill={color} opacity=".3" />
@@ -15,14 +26,18 @@ function ProjectIcon({ name, color }: { name: ProjectIconName; color: string }) 
           <circle cx="32" cy="32" r="5" fill="#fff" />
         </svg>
       );
-    case 'loop':
+    case "loop":
       return (
         <svg {...common}>
-          <path d="M20 32a12 12 0 1 1 24 0 12 12 0 1 1-24 0z" stroke={color} strokeWidth="4" />
+          <path
+            d="M20 32a12 12 0 1 1 24 0 12 12 0 1 1-24 0z"
+            stroke={color}
+            strokeWidth="4"
+          />
           <circle cx="44" cy="32" r="5" fill={color} />
         </svg>
       );
-    case 'parakeet':
+    case "parakeet":
       return (
         <svg {...common}>
           <path
@@ -35,41 +50,83 @@ function ProjectIcon({ name, color }: { name: ProjectIconName; color: string }) 
           <circle cx="48" cy="22" r="4" fill={color} />
         </svg>
       );
-    case 'tangerine':
+    case "tangerine":
       return (
         <svg {...common}>
           <rect x="14" y="14" width="16" height="16" rx="3" fill={color} />
-          <rect x="34" y="14" width="16" height="16" rx="8" fill={color} opacity=".5" />
-          <rect x="14" y="34" width="16" height="16" rx="8" fill={color} opacity=".5" />
+          <rect
+            x="34"
+            y="14"
+            width="16"
+            height="16"
+            rx="8"
+            fill={color}
+            opacity=".5"
+          />
+          <rect
+            x="14"
+            y="34"
+            width="16"
+            height="16"
+            rx="8"
+            fill={color}
+            opacity=".5"
+          />
           <rect x="34" y="34" width="16" height="16" rx="3" fill={color} />
         </svg>
       );
-    case 'pebble':
+    case "pebble":
       return (
         <svg {...common}>
-          <path d="M14 42c0-16 12-22 18-22s18 6 18 22-36 16-36 0z" fill={color} />
+          <path
+            d="M14 42c0-16 12-22 18-22s18 6 18 22-36 16-36 0z"
+            fill={color}
+          />
           <rect x="22" y="34" width="20" height="3" fill="#fff" rx="1" />
         </svg>
       );
-    case 'atlas':
+    case "atlas":
       return (
         <svg {...common}>
-          <circle cx="32" cy="32" r="20" stroke={color} strokeWidth="3" fill="none" />
-          <ellipse cx="32" cy="32" rx="20" ry="9" stroke={color} strokeWidth="3" fill="none" />
-          <line x1="12" y1="32" x2="52" y2="32" stroke={color} strokeWidth="3" />
+          <circle
+            cx="32"
+            cy="32"
+            r="20"
+            stroke={color}
+            strokeWidth="3"
+            fill="none"
+          />
+          <ellipse
+            cx="32"
+            cy="32"
+            rx="20"
+            ry="9"
+            stroke={color}
+            strokeWidth="3"
+            fill="none"
+          />
+          <line
+            x1="12"
+            y1="32"
+            x2="52"
+            y2="32"
+            stroke={color}
+            strokeWidth="3"
+          />
         </svg>
       );
   }
 }
 
-type Filter = 'All' | 'Personal' | 'Work';
+type Filter = "All" | "Personal" | "Work";
 
 export default function Projects() {
   const [active, setActive] = useState(0);
   const [flipped, setFlipped] = useState<Set<number>>(new Set());
-  const [filter, setFilter] = useState<Filter>('All');
+  const [filter, setFilter] = useState<Filter>("All");
 
-  const filtered: Project[] = filter === 'All' ? PROJECTS : PROJECTS.filter((p) => p.type === filter);
+  const filtered: Project[] =
+    filter === "All" ? PROJECTS : PROJECTS.filter((p) => p.type === filter);
   const total = filtered.length;
 
   const next = () => {
@@ -100,20 +157,29 @@ export default function Projects() {
         <h2 className="section-title">
           A <em className="serif">playful deck</em> of recent work.
         </h2>
-        <p style={{ maxWidth: 560, color: 'var(--ink-soft)', margin: '12px 0 32px' }}>
-          Click any card to flip it and see tech + links. Use the arrows or drag the stack to browse.
+        <p
+          style={{
+            maxWidth: 560,
+            color: "var(--ink-soft)",
+            margin: "12px 0 32px",
+          }}
+        >
+          Click any card to flip it and see tech + links. Use the arrows or drag
+          the stack to browse.
         </p>
 
         <div className="filter-row">
-          {(['All', 'Personal', 'Work'] as Filter[]).map((f) => (
+          {(["All", "Personal", "Work"] as Filter[]).map((f) => (
             <button
               key={f}
-              className={`filter-pill ${filter === f ? 'on' : ''}`}
+              className={`filter-pill ${filter === f ? "on" : ""}`}
               onClick={() => setFilter(f)}
             >
               {f}
               <span className="count">
-                {f === 'All' ? PROJECTS.length : PROJECTS.filter((p) => p.type === f).length}
+                {f === "All"
+                  ? PROJECTS.length
+                  : PROJECTS.filter((p) => p.type === f).length}
               </span>
             </button>
           ))}
@@ -141,12 +207,12 @@ export default function Projects() {
               return (
                 <div
                   key={p.title}
-                  className={`deck-card ${isActive ? 'active' : ''} ${isFlipped ? 'flipped' : ''}`}
+                  className={`deck-card ${isActive ? "active" : ""} ${isFlipped ? "flipped" : ""}`}
                   style={{
                     transform: `translateX(${offset * 40}px) translateZ(${-abs * 80}px) rotateY(${offset * -8}deg) rotateZ(${offset * 2}deg)`,
                     zIndex: 100 - abs,
                     opacity: abs > 3 ? 0 : 1 - abs * 0.15,
-                    pointerEvents: isActive ? 'auto' : 'none',
+                    pointerEvents: isActive ? "auto" : "none",
                   }}
                   onClick={() => (isActive ? toggleFlip(i) : setActive(i))}
                 >
@@ -155,7 +221,7 @@ export default function Projects() {
                       <div
                         className="deck-face deck-front"
                         style={{
-                          backgroundColor: 'var(--cream)',
+                          backgroundColor: "var(--cream)",
                           backgroundImage: `linear-gradient(145deg, ${p.tint}20, var(--surface-2))`,
                           borderColor: `${p.tint}40`,
                         }}
@@ -172,7 +238,8 @@ export default function Projects() {
                             {p.type} · {p.year}
                           </span>
                           <div className="dc-num mono">
-                            {String(i + 1).padStart(2, '0')} / {String(total).padStart(2, '0')}
+                            {String(i + 1).padStart(2, "0")} /{" "}
+                            {String(total).padStart(2, "0")}
                           </div>
                         </div>
 
@@ -197,36 +264,52 @@ export default function Projects() {
                             {filtered.map((_, j) => (
                               <span
                                 key={j}
-                                className={`dot ${j === active ? 'on' : ''}`}
-                                style={{ background: j === active ? p.tint : 'rgba(255,255,255,.15)' }}
+                                className={`dot ${j === active ? "on" : ""}`}
+                                style={{
+                                  background:
+                                    j === active
+                                      ? p.tint
+                                      : "rgba(255,255,255,.15)",
+                                }}
                               />
                             ))}
                           </div>
                         </div>
 
-                        <div className="dc-shape s1" style={{ background: p.tint }} />
-                        <div className="dc-shape s2" style={{ borderColor: p.tint }} />
+                        <div
+                          className="dc-shape s1"
+                          style={{ background: p.tint }}
+                        />
+                        <div
+                          className="dc-shape s2"
+                          style={{ borderColor: p.tint }}
+                        />
                       </div>
                     )}
 
                     {isFlipped && (
                       <div
                         className="deck-face deck-back"
-                        style={{ background: `linear-gradient(145deg, ${p.tint}, ${p.tint}CC)` }}
+                        style={{
+                          background: `linear-gradient(145deg, ${p.tint}, ${p.tint}CC)`,
+                        }}
                       >
                         <div className="db-top">
                           <div
                             className="mono"
                             style={{
                               fontSize: 11,
-                              color: 'rgba(0,0,0,.5)',
-                              letterSpacing: '.15em',
-                              textTransform: 'uppercase',
+                              color: "rgba(0,0,0,.5)",
+                              letterSpacing: ".15em",
+                              textTransform: "uppercase",
                             }}
                           >
                             Details
                           </div>
-                          <div className="mono" style={{ fontSize: 11, color: 'rgba(0,0,0,.5)' }}>
+                          <div
+                            className="mono"
+                            style={{ fontSize: 11, color: "rgba(0,0,0,.5)" }}
+                          >
                             {p.year}
                           </div>
                         </div>
@@ -234,7 +317,7 @@ export default function Projects() {
                         <h3 className="db-title serif">{p.title}</h3>
 
                         <div className="db-section">
-                          <div className="db-label mono">{'// tech stack'}</div>
+                          <div className="db-label mono">{"// tech stack"}</div>
                           <div className="row" style={{ gap: 6, marginTop: 8 }}>
                             {p.tech.map((tech) => (
                               <span key={tech} className="db-tech-chip">
@@ -245,14 +328,23 @@ export default function Projects() {
                         </div>
 
                         <div className="db-section">
-                          <div className="db-label mono">{'// what i did'}</div>
+                          <div className="db-label mono">{"// what i did"}</div>
                           <p className="db-about">{p.blurb}</p>
                         </div>
 
                         <div className="db-links">
-                          <a href={p.link} className="db-link" onClick={(e) => e.stopPropagation()}>
+                          <a
+                            href={p.link}
+                            className="db-link"
+                            onClick={(e) => e.stopPropagation()}
+                          >
                             live demo
-                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
+                            <svg
+                              width="14"
+                              height="14"
+                              viewBox="0 0 24 24"
+                              fill="none"
+                            >
                               <path
                                 d="M7 17L17 7M17 7H7M17 7v10"
                                 stroke="currentColor"
@@ -261,9 +353,18 @@ export default function Projects() {
                               />
                             </svg>
                           </a>
-                          <a href={p.link} className="db-link" onClick={(e) => e.stopPropagation()}>
+                          <a
+                            href={p.link}
+                            className="db-link"
+                            onClick={(e) => e.stopPropagation()}
+                          >
                             source
-                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
+                            <svg
+                              width="14"
+                              height="14"
+                              viewBox="0 0 24 24"
+                              fill="none"
+                            >
                               <path
                                 d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.5a3 3 0 0 0-.8-2.2c2.8-.3 5.8-1.4 5.8-6.3a4.9 4.9 0 0 0-1.4-3.4 4.6 4.6 0 0 0-.1-3.4s-1.1-.3-3.5 1.3a12 12 0 0 0-6.4 0c-2.4-1.6-3.5-1.3-3.5-1.3a4.6 4.6 0 0 0-.1 3.4A4.9 4.9 0 0 0 4.6 10c0 4.9 3 6 5.8 6.3a3 3 0 0 0-.8 2.2V22"
                                 stroke="currentColor"
@@ -275,7 +376,9 @@ export default function Projects() {
                           </a>
                         </div>
 
-                        <span className="db-flip-cue mono">← tap to flip back</span>
+                        <span className="db-flip-cue mono">
+                          ← tap to flip back
+                        </span>
                       </div>
                     )}
                   </div>
@@ -299,8 +402,9 @@ export default function Projects() {
 
         <div className="stage-caption">
           <span className="mono">
-            <span style={{ color: 'var(--peri)' }}>●</span> {filtered[active]?.title} —{' '}
-            <span style={{ color: 'var(--muted)' }}>
+            <span style={{ color: "var(--peri)" }}>●</span>{" "}
+            {filtered[active]?.title} -{" "}
+            <span style={{ color: "var(--muted)" }}>
               {active + 1} of {total}
             </span>
           </span>
@@ -322,7 +426,7 @@ export default function Projects() {
           padding: 10px 20px;
           border-radius: 999px;
           cursor: pointer;
-          font-family: 'Inter', sans-serif;
+          font-family: "Inter", sans-serif;
           font-size: 13px;
           font-weight: 500;
           display: inline-flex;
@@ -341,7 +445,7 @@ export default function Projects() {
           box-shadow: 0 8px 24px rgba(167, 139, 250, 0.35);
         }
         .filter-pill .count {
-          font-family: 'JetBrains Mono', monospace;
+          font-family: "JetBrains Mono", monospace;
           font-size: 10px;
           background: rgba(0, 0, 0, 0.25);
           padding: 2px 7px;
@@ -369,7 +473,9 @@ export default function Projects() {
           position: absolute;
           inset: 0;
           transform-style: preserve-3d;
-          transition: transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1), opacity 0.4s ease;
+          transition:
+            transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1),
+            opacity 0.4s ease;
           cursor: pointer;
           will-change: transform;
         }
@@ -388,7 +494,9 @@ export default function Projects() {
           backface-visibility: hidden;
           -webkit-backface-visibility: hidden;
           border: 1.5px solid;
-          box-shadow: 0 30px 80px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+          box-shadow:
+            0 30px 80px rgba(0, 0, 0, 0.5),
+            inset 0 1px 0 rgba(255, 255, 255, 0.08);
           overflow: hidden;
         }
         .deck-card :global(.deck-front) {
@@ -410,7 +518,7 @@ export default function Projects() {
           z-index: 2;
         }
         .deck-card :global(.dc-chip) {
-          font-family: 'JetBrains Mono', monospace;
+          font-family: "JetBrains Mono", monospace;
           font-size: 11px;
           padding: 4px 10px;
           border-radius: 999px;
@@ -555,12 +663,12 @@ export default function Projects() {
           border-radius: 999px;
           background: rgba(0, 0, 0, 0.15);
           color: #0e0b1a;
-          font-family: 'JetBrains Mono', monospace;
+          font-family: "JetBrains Mono", monospace;
           font-size: 11px;
           border: 1px solid rgba(0, 0, 0, 0.12);
         }
         .deck-card :global(.db-about) {
-          font-family: 'Instrument Serif', serif;
+          font-family: "Instrument Serif", serif;
           font-size: 22px;
           line-height: 1.3;
           color: #0e0b1a;

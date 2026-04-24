@@ -1,7 +1,7 @@
-'use client';
+"use client";
 
-import { useState } from 'react';
-import { TECH, type Tech } from '@/lib/data';
+import { useState } from "react";
+import { TECH, type Tech } from "@/lib/data";
 
 export default function TechStack() {
   const [hover, setHover] = useState<Tech | null>(null);
@@ -20,9 +20,15 @@ export default function TechStack() {
         <h2 className="section-title">
           My <em className="serif">mixtape</em> of tools.
         </h2>
-        <p style={{ maxWidth: 560, color: 'var(--ink-soft)', margin: '12px 0 40px' }}>
-          Think of this as Side A — the tools on heavy rotation. Hover the record to pause it, tap any badge to hear
-          why I like it.
+        <p
+          style={{
+            maxWidth: 560,
+            color: "var(--ink-soft)",
+            margin: "12px 0 40px",
+          }}
+        >
+          Think of this as Side A - the tools on heavy rotation. Hover the
+          record to pause it, tap any badge to hear why I like it.
         </p>
 
         <div className="vinyl-layout">
@@ -30,7 +36,11 @@ export default function TechStack() {
             <div className="vinyl">
               <div className="vinyl-disc">
                 {[0, 1, 2, 3, 4, 5, 6, 7].map((i) => (
-                  <div key={i} className="groove" style={{ inset: `${8 + i * 8}%` }} />
+                  <div
+                    key={i}
+                    className="groove"
+                    style={{ inset: `${8 + i * 8}%` }}
+                  />
                 ))}
 
                 <div className="orbit orbit-outer">
@@ -40,16 +50,28 @@ export default function TechStack() {
                       <div
                         key={t.name}
                         className="orbit-slot"
-                        style={{ transform: `rotate(${angle}deg) translateY(-235px)` }}
+                        style={{
+                          transform: `rotate(${angle}deg) translateY(-235px)`,
+                        }}
                       >
                         <button
                           className="tbadge"
-                          style={{ background: t.color, boxShadow: `0 0 24px ${t.color}66` }}
+                          style={{
+                            background: t.color,
+                            boxShadow: `0 0 24px ${t.color}66`,
+                          }}
                           onMouseEnter={() => setHover(t)}
                           onMouseLeave={() => setHover(null)}
                           onClick={() => setPicked(t)}
                         >
-                          <span style={{ transform: `rotate(-${angle}deg)`, display: 'block' }}>{t.glyph}</span>
+                          <span
+                            style={{
+                              transform: `rotate(-${angle}deg)`,
+                              display: "block",
+                            }}
+                          >
+                            {t.glyph}
+                          </span>
                         </button>
                       </div>
                     );
@@ -63,16 +85,28 @@ export default function TechStack() {
                       <div
                         key={t.name}
                         className="orbit-slot"
-                        style={{ transform: `rotate(${angle}deg) translateY(-160px)` }}
+                        style={{
+                          transform: `rotate(${angle}deg) translateY(-160px)`,
+                        }}
                       >
                         <button
                           className="tbadge tbadge-md"
-                          style={{ background: t.color, boxShadow: `0 0 20px ${t.color}66` }}
+                          style={{
+                            background: t.color,
+                            boxShadow: `0 0 20px ${t.color}66`,
+                          }}
                           onMouseEnter={() => setHover(t)}
                           onMouseLeave={() => setHover(null)}
                           onClick={() => setPicked(t)}
                         >
-                          <span style={{ transform: `rotate(${angle}deg)`, display: 'block' }}>{t.glyph}</span>
+                          <span
+                            style={{
+                              transform: `rotate(${angle}deg)`,
+                              display: "block",
+                            }}
+                          >
+                            {t.glyph}
+                          </span>
                         </button>
                       </div>
                     );
@@ -86,16 +120,27 @@ export default function TechStack() {
                       <div
                         key={t.name}
                         className="orbit-slot"
-                        style={{ transform: `rotate(${angle}deg) translateY(-92px)` }}
+                        style={{
+                          transform: `rotate(${angle}deg) translateY(-92px)`,
+                        }}
                       >
                         <button
                           className="tbadge tbadge-sm"
-                          style={{ background: t.color, boxShadow: `0 0 16px ${t.color}77` }}
+                          style={{
+                            background: t.color,
+                            boxShadow: `0 0 16px ${t.color}77`,
+                          }}
                           onMouseEnter={() => setHover(t)}
                           onMouseLeave={() => setHover(null)}
                           onClick={() => setPicked(t)}
                         >
-                          <span style={{ transform: `rotate(-${angle}deg)`, display: 'block', fontSize: 12 }}>
+                          <span
+                            style={{
+                              transform: `rotate(-${angle}deg)`,
+                              display: "block",
+                              fontSize: 12,
+                            }}
+                          >
                             {t.glyph}
                           </span>
                         </button>
@@ -133,9 +178,9 @@ export default function TechStack() {
                 <span
                   className="tier-pill"
                   style={{
-                    background: 'rgba(110,231,183,.15)',
-                    color: 'var(--mint)',
-                    borderColor: 'rgba(110,231,183,.3)',
+                    background: "rgba(110,231,183,.15)",
+                    color: "var(--mint)",
+                    borderColor: "rgba(110,231,183,.3)",
                   }}
                 >
                   daily driver
@@ -145,9 +190,9 @@ export default function TechStack() {
                 <span
                   className="tier-pill"
                   style={{
-                    background: 'rgba(167,139,250,.15)',
-                    color: 'var(--peri)',
-                    borderColor: 'rgba(167,139,250,.3)',
+                    background: "rgba(167,139,250,.15)",
+                    color: "var(--peri)",
+                    borderColor: "rgba(167,139,250,.3)",
                   }}
                 >
                   often reached for
@@ -157,9 +202,9 @@ export default function TechStack() {
                 <span
                   className="tier-pill"
                   style={{
-                    background: 'rgba(255,138,184,.15)',
-                    color: 'var(--blush)',
-                    borderColor: 'rgba(255,138,184,.3)',
+                    background: "rgba(255,138,184,.15)",
+                    color: "var(--blush)",
+                    borderColor: "rgba(255,138,184,.3)",
                   }}
                 >
                   on rotation
@@ -172,8 +217,11 @@ export default function TechStack() {
                 return (
                   <div
                     key={i}
-                    className={`bar ${i < level ? 'on' : ''}`}
-                    style={{ background: i < level ? shown.color : 'rgba(255,255,255,.08)' }}
+                    className={`bar ${i < level ? "on" : ""}`}
+                    style={{
+                      background:
+                        i < level ? shown.color : "rgba(255,255,255,.08)",
+                    }}
                   />
                 );
               })}
@@ -181,19 +229,23 @@ export default function TechStack() {
             </div>
 
             <div className="tracklist">
-              <div className="tl-head mono">{'// FULL TRACKLIST'}</div>
+              <div className="tl-head mono">{"// FULL TRACKLIST"}</div>
               {TECH.map((t, i) => (
                 <button
                   key={t.name}
-                  className={`tl-row ${shown.name === t.name ? 'on' : ''}`}
+                  className={`tl-row ${shown.name === t.name ? "on" : ""}`}
                   onMouseEnter={() => setHover(t)}
                   onMouseLeave={() => setHover(null)}
                   onClick={() => setPicked(t)}
                 >
-                  <span className="tl-num mono">{String(i + 1).padStart(2, '0')}</span>
+                  <span className="tl-num mono">
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
                   <span className="tl-dot" style={{ background: t.color }} />
                   <span className="tl-name">{t.name}</span>
-                  <span className="tl-dur mono">{t.ring === 0 ? '4:32' : t.ring === 1 ? '3:48' : '2:56'}</span>
+                  <span className="tl-dur mono">
+                    {t.ring === 0 ? "4:32" : t.ring === 1 ? "3:48" : "2:56"}
+                  </span>
                 </button>
               ))}
             </div>
@@ -224,8 +276,14 @@ export default function TechStack() {
           position: absolute;
           inset: 0;
           border-radius: 50%;
-          background: radial-gradient(circle at 50% 50%, #1a1a2e 0%, #0a0a14 100%);
-          box-shadow: 0 40px 80px rgba(0, 0, 0, 0.7), 0 0 0 1px rgba(255, 255, 255, 0.04),
+          background: radial-gradient(
+            circle at 50% 50%,
+            #1a1a2e 0%,
+            #0a0a14 100%
+          );
+          box-shadow:
+            0 40px 80px rgba(0, 0, 0, 0.7),
+            0 0 0 1px rgba(255, 255, 255, 0.04),
             inset 0 0 120px rgba(167, 139, 250, 0.1);
           animation: spinDisc 28s linear infinite;
           will-change: transform;
@@ -271,13 +329,15 @@ export default function TechStack() {
           cursor: pointer;
           display: grid;
           place-items: center;
-          font-family: 'JetBrains Mono', monospace;
+          font-family: "JetBrains Mono", monospace;
           font-weight: 700;
           font-size: 14px;
           color: #fff;
           text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
           transform: translate(-50%, -50%);
-          transition: scale 0.2s ease, box-shadow 0.2s ease;
+          transition:
+            scale 0.2s ease,
+            box-shadow 0.2s ease;
           backdrop-filter: blur(4px);
         }
         .tbadge-md {
@@ -304,7 +364,9 @@ export default function TechStack() {
           background: radial-gradient(circle, var(--accent), var(--peri));
           display: grid;
           place-items: center;
-          box-shadow: inset 0 0 30px rgba(0, 0, 0, 0.3), 0 0 40px rgba(255, 107, 157, 0.4);
+          box-shadow:
+            inset 0 0 30px rgba(0, 0, 0, 0.3),
+            0 0 40px rgba(255, 107, 157, 0.4);
           color: #fff;
           text-align: center;
         }
@@ -339,11 +401,13 @@ export default function TechStack() {
           height: 50px;
           border-radius: 50%;
           background: linear-gradient(145deg, #3a3448, #1a1824);
-          box-shadow: inset 0 2px 4px rgba(255, 255, 255, 0.1), 0 8px 20px rgba(0, 0, 0, 0.5);
+          box-shadow:
+            inset 0 2px 4px rgba(255, 255, 255, 0.1),
+            0 8px 20px rgba(0, 0, 0, 0.5);
           border: 1px solid rgba(255, 255, 255, 0.1);
         }
         .tonearm-base::after {
-          content: '';
+          content: "";
           position: absolute;
           inset: 35%;
           border-radius: 50%;
@@ -379,7 +443,9 @@ export default function TechStack() {
           border-radius: 24px;
           background: linear-gradient(145deg, var(--surface), var(--surface-2));
           border: 0.5px solid rgba(255, 255, 255, 0.06);
-          box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.04);
+          box-shadow:
+            0 20px 60px rgba(0, 0, 0, 0.4),
+            inset 0 1px 0 rgba(255, 255, 255, 0.04);
         }
         .track-now {
           font-size: 11px;
@@ -415,7 +481,7 @@ export default function TechStack() {
           padding: 6px 14px;
           border-radius: 999px;
           border: 1px solid;
-          font-family: 'JetBrains Mono', monospace;
+          font-family: "JetBrains Mono", monospace;
           font-size: 11px;
           letter-spacing: 0.05em;
           text-transform: uppercase;
@@ -460,7 +526,7 @@ export default function TechStack() {
           border: 0;
           cursor: pointer;
           color: var(--ink-soft);
-          font-family: 'Inter', sans-serif;
+          font-family: "Inter", sans-serif;
           font-size: 13px;
           text-align: left;
           transition: all 0.2s ease;

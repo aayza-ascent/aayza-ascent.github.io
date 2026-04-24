@@ -1,6 +1,6 @@
-'use client';
+"use client";
 
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef } from "react";
 
 export default function Hero() {
   const blobRef = useRef<HTMLDivElement>(null);
@@ -35,10 +35,10 @@ export default function Hero() {
       raf = requestAnimationFrame(tick);
     };
     raf = requestAnimationFrame(tick);
-    window.addEventListener('mousemove', onMove);
+    window.addEventListener("mousemove", onMove);
     return () => {
       cancelAnimationFrame(raf);
-      window.removeEventListener('mousemove', onMove);
+      window.removeEventListener("mousemove", onMove);
     };
   }, []);
 
@@ -46,7 +46,12 @@ export default function Hero() {
     <section
       id="home"
       ref={heroRef}
-      style={{ minHeight: '100vh', padding: '140px 32px 80px', position: 'relative', overflow: 'hidden' }}
+      style={{
+        minHeight: "100vh",
+        padding: "140px 32px 80px",
+        position: "relative",
+        overflow: "hidden",
+      }}
     >
       <div ref={blobRef} className="blob blob-peri" aria-hidden />
       <div ref={blob2Ref} className="blob blob-blush" aria-hidden />
@@ -54,8 +59,18 @@ export default function Hero() {
 
       <svg aria-hidden className="hero-grid" width="100%" height="100%">
         <defs>
-          <pattern id="grid" width="44" height="44" patternUnits="userSpaceOnUse">
-            <path d="M 44 0 L 0 0 0 44" fill="none" stroke="rgba(255,255,255,.05)" strokeWidth=".5" />
+          <pattern
+            id="grid"
+            width="44"
+            height="44"
+            patternUnits="userSpaceOnUse"
+          >
+            <path
+              d="M 44 0 L 0 0 0 44"
+              fill="none"
+              stroke="rgba(255,255,255,.05)"
+              strokeWidth=".5"
+            />
           </pattern>
         </defs>
         <rect width="100%" height="100%" fill="url(#grid)" />
@@ -66,9 +81,9 @@ export default function Hero() {
           <span
             className="chip"
             style={{
-              background: 'rgba(110,231,183,.12)',
-              borderColor: 'rgba(110,231,183,.3)',
-              color: 'var(--mint)',
+              background: "rgba(110,231,183,.12)",
+              borderColor: "rgba(110,231,183,.3)",
+              color: "var(--mint)",
             }}
           >
             <span
@@ -76,8 +91,9 @@ export default function Hero() {
                 width: 8,
                 height: 8,
                 borderRadius: 99,
-                background: '#6EE7B7',
-                boxShadow: '0 0 0 3px rgba(110,231,183,.2), 0 0 12px rgba(110,231,183,.6)',
+                background: "#6EE7B7",
+                boxShadow:
+                  "0 0 0 3px rgba(110,231,183,.2), 0 0 12px rgba(110,231,183,.6)",
               }}
             />
             available for select work
@@ -88,9 +104,9 @@ export default function Hero() {
         <h1 className="hero-name">
           <span className="line-a">Hi, I&rsquo;m</span>
           <span className="line-b">
-            <span className="name-word">Aayza</span>
-            <span className="name-word">Ahmed</span>
-            <span className="name-dot">.</span>
+            <span className="name-word">Aayza.</span>
+            {/* <span className="name-word">Ahmed</span> */}
+            {/* <span className="name-dot">.</span> */}
           </span>
           <span className="line-c serif">
             <em>a software engineer</em> who likes
@@ -100,8 +116,9 @@ export default function Hero() {
         </h1>
 
         <p className="hero-sub">
-          Seven years shipping full-stack TypeScript, fully remote, across fintech, SaaS and consultancy teams.
-          Currently building AI-powered workflow automation and modular dashboards at <b>Ascent Platform</b>.
+          Seven years shipping full-stack TypeScript, fully remote, across
+          fintech, SaaS and consultancy teams. Currently building AI-powered
+          workflow automation and modular dashboards at <b>Ascent Platform</b>.
         </p>
 
         <div className="row hero-cta">
@@ -120,18 +137,23 @@ export default function Hero() {
           <a href="#contact" className="btn btn-ghost">
             Say hi ↗
           </a>
-          <span className="mono" style={{ color: 'var(--muted)', marginLeft: 'auto', fontSize: 12 }}>
-            move your cursor — the gradient follows
+          <span
+            className="mono"
+            style={{ color: "var(--muted)", marginLeft: "auto", fontSize: 12 }}
+          >
+            move your cursor - the gradient follows
           </span>
         </div>
 
         <div className="hero-stats">
-          {([
-            ['7', 'years shipping'],
-            ['1st', 'class honours'],
-            ['100%', "remote since '20"],
-            ['AWS', 'cloud practitioner'],
-          ] as const).map(([n, l]) => (
+          {(
+            [
+              ["7", "years shipping"],
+              ["1st", "class honours"],
+              ["6", "years working remotely"],
+              ["100%", "outgoing, funny, and humble (self-rated)"],
+            ] as const
+          ).map(([n, l]) => (
             <div key={l} className="stat">
               <div className="stat-n serif">{n}</div>
               <div className="stat-l mono">{l}</div>
@@ -188,7 +210,7 @@ export default function Hero() {
           margin-top: 40px;
         }
         :global(.hero-name) {
-          font-family: 'Instrument Serif', serif;
+          font-family: "Instrument Serif", serif;
           font-weight: 400;
           font-size: clamp(56px, 10vw, 140px);
           line-height: 0.98;
@@ -197,7 +219,7 @@ export default function Hero() {
         }
         :global(.hero-name .line-a) {
           display: block;
-          font-family: 'Inter', sans-serif;
+          font-family: "Inter", sans-serif;
           font-size: clamp(16px, 1.4vw, 18px);
           font-weight: 500;
           color: var(--muted);
@@ -287,7 +309,9 @@ export default function Hero() {
           background: rgba(26, 22, 48, 0.5);
           backdrop-filter: blur(12px);
           border: 0.5px solid rgba(255, 255, 255, 0.08);
-          box-shadow: 0 14px 40px rgba(0, 0, 0, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+          box-shadow:
+            0 14px 40px rgba(0, 0, 0, 0.35),
+            inset 0 1px 0 rgba(255, 255, 255, 0.05);
         }
         .stat {
           padding: 22px 18px;
