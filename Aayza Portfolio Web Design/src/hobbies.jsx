@@ -1,0 +1,125 @@
+// src/hobbies.jsx — flip cards + fun-fact randomizer
+
+const { useState: useStateH } = React;
+
+function FlipCard({ h }) {
+  const [flipped, setFlipped] = useStateH(false);
+  return (
+    <button
+      className={`flip ${flipped ? "flipped" : ""}`}
+      onClick={() => setFlipped(!flipped)}
+      aria-pressed={flipped}
+    >
+      <div className="flip-inner">
+        <div className="face front">
+          <div className="emoji-wrap" style={{background: `radial-gradient(circle, ${h.color}44, transparent)`}}>
+            <div className="emoji">{h.emoji}</div>
+          </div>
+          <div>
+            <div className="flip-label serif" style={{color: h.color}}>{h.front}</div>
+            <div className="flip-hint mono" style={{marginTop:8}}>tap to flip</div>
+          </div>
+        </div>
+        <div className="face back" style={{background: `linear-gradient(145deg, ${h.color}, ${h.color}CC)`}}>
+          <p>{h.back}</p>
+          <div className="flip-hint mono" style={{color:"rgba(0,0,0,.45)"}}>tap to flip back</div>
+        </div>
+      </div>
+    </button>
+  );
+}
+
+function Hobbies() {
+  const [fact, setFact] = useStateH(window.FACTS[0]);
+  const [spinning, setSpinning] = useStateH(false);
+
+  const randomize = () => {
+    setSpinning(true);
+    let i = 0;
+    const timer = setInterval(() => {
+      setFact(window.FACTS[Math.floor(Math.random() * window.FACTS.length)]);
+      i++;
+      if (i > 8) {
+        clearInterval(timer);
+        setSpinning(false);
+      }
+    }, 60);
+  };
+
+  return (
+    <section id="hobbies">
+      <div className="container">
+        <div className="eyebrow">05 / Off the clock</div>
+        <h2 className="section-title">
+          When I’m <em className="serif">not at the keyboard</em>.
+        </h2>
+        <p style={{maxWidth:560,color:"var(--ink-soft)",margin:"12px 0 48px"}}>
+          Six things that take up most of my weekends. Tap any card — the back has the actual specifics.
+        </p>
+
+        <div className="flip-grid">
+          {window.HOBBIES.map((h, i) => <FlipCard key={i} h={h} />)}
+        </div>
+
+        {/* Fun-fact randomizer */}
+        <div className="facts glass">
+          <div className="facts-left">
+            <div className="eyebrow" style={{marginBottom:8}}>Fun fact generator</div>
+            <div className={`fact serif ${spinning ? "spin" : ""}`} key={fact}>
+              {fact}
+            </div>
+          </div>
+          <button className="btn btn-primary shuffle" onClick={randomize}>
+            <span className={`shuf-icon ${spinning ? "spin" : ""}`}>⇄</span>
+            New fact
+          </button>
+        </div>
+      </div>
+
+      <style>{`
+        .flip-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-bottom:64px}
+        .flip{appearance:none;border:0;background:transparent;padding:0;cursor:pointer;
+          perspective:1200px;aspect-ratio:5/4;width:100%}
+        .flip-inner{position:relative;width:100%;height:100%;
+          transition:transform .7s cubic-bezier(.2,.8,.2,1);transform-style:preserve-3d}
+        .flip.flipped .flip-inner{transform:rotateY(180deg)}
+        .face{position:absolute;inset:0;border-radius:22px;padding:22px;
+          display:flex;flex-direction:column;justify-content:space-between;
+          backface-visibility:hidden;-webkit-backface-visibility:hidden;
+          border:.5px solid rgba(255,255,255,.08);
+          box-shadow:10px 10px 30px rgba(0,0,0,.4), inset 0 1px 0 rgba(255,255,255,.05);
+          text-align:left}
+        .front{background:linear-gradient(145deg,var(--surface),var(--surface-2)) !important}
+        .front{color:var(--ink)}
+        .back{transform:rotateY(180deg);color:#0E0B1A}
+        .back p{font-family:'Instrument Serif',serif;font-size:22px;line-height:1.25;font-style:italic}
+        .emoji{font-size:42px;line-height:1;filter:drop-shadow(0 4px 12px rgba(0,0,0,.4))}
+        .flip-label{font-size:28px;line-height:1;color:var(--ink)}
+        .flip-hint{font-size:10px;letter-spacing:.15em;text-transform:uppercase;
+          color:rgba(255,255,255,.4)}
+
+        .emoji-wrap{width:80px;height:80px;border-radius:20px;display:grid;place-items:center;filter:blur(0)}
+        .facts{display:flex;align-items:center;justify-content:space-between;gap:24px;
+          padding:28px 32px;flex-wrap:wrap;
+          background:linear-gradient(135deg, rgba(167,139,250,.1), rgba(255,138,184,.08)) !important;
+          border:.5px solid rgba(167,139,250,.2) !important}
+        .facts-left{flex:1;min-width:260px}
+        .fact{font-size:clamp(22px,2vw,28px);line-height:1.25;color:var(--ink);animation:factIn .5s ease}
+        .fact.spin{opacity:.6}
+        @keyframes factIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+        .shuf-icon{display:inline-block;transition:transform .4s ease}
+        .shuf-icon.spin{animation:shufSpin .6s ease}
+        @keyframes shufSpin{from{transform:rotate(0)}to{transform:rotate(360deg)}}
+
+        @media (max-width:820px){
+          .flip-grid{grid-template-columns:repeat(2,1fr)}
+        }
+        @media (max-width:520px){
+          .flip-grid{grid-template-columns:1fr}
+        }
+      `}</style>
+    </section>
+  );
+}
+
+window.Hobbies = Hobbies;
