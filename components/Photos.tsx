@@ -20,8 +20,8 @@ export default function Photos() {
             margin: "12px 0 48px",
           }}
         >
-          Mostly shot on a Pentax K1000, occasionally phone. Click any polaroid
-          to enlarge - hover to unpin from the wall.
+          Photos I love from my life. Click any polaroid to enlarge - hover to
+          unpin from the wall.
         </p>
 
         <div className="polaroids">
