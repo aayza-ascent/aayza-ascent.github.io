@@ -1,6 +1,6 @@
 # aayza-ascent.github.io
 
-Personal portfolio for **Aayza Ahmed** — Glasgow-based software engineer building full-stack TypeScript, AI-assisted workflow automation, and modular dashboards.
+Personal website for **Aayza Ahmed** — Glasgow-based software engineer building full-stack TypeScript, AI-assisted workflow automation, and modular dashboards.
 
 🌐 **Live**: [aayza-ascent.github.io](https://aayza-ascent.github.io)
 
