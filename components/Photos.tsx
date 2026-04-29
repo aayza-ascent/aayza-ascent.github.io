@@ -107,32 +107,33 @@ export default function Photos() {
         .polaroids {
           display: grid;
           grid-template-columns: repeat(4, 1fr);
-          gap: 28px;
-          padding: 20px 0;
+          gap: var(--space-7);
+          padding: var(--space-5) 0;
         }
         .polaroid {
           appearance: none;
           border: 0;
           padding: 14px 14px 42px;
-          background: #f5f1ea;
+          background: var(--paper);
           border-radius: 4px;
           cursor: pointer;
           position: relative;
           box-shadow:
-            0 20px 40px rgba(0, 0, 0, 0.5),
+            0 20px 40px var(--scrim-50),
             0 2px 4px rgba(0, 0, 0, 0.3);
           transform: rotate(var(--rot)) translateY(0);
           transition:
             transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1),
             box-shadow 0.4s ease;
           text-align: left;
+          z-index: 1;
         }
         .polaroid:hover {
           transform: rotate(0deg) translateY(-8px) scale(1.03);
           box-shadow:
             0 30px 60px rgba(167, 139, 250, 0.3),
-            0 4px 10px rgba(0, 0, 0, 0.4);
-          z-index: 20 !important;
+            0 4px 10px var(--scrim-40);
+          z-index: 20;
         }
         .polaroid-img {
           aspect-ratio: 1 / 1;
@@ -156,12 +157,12 @@ export default function Photos() {
           position: absolute;
           left: 0;
           right: 0;
-          bottom: 12px;
+          bottom: var(--space-3);
           text-align: center;
           font-family: "Caveat", "Instrument Serif", cursive;
           font-style: italic;
           font-size: 18px;
-          color: #4a4538;
+          color: var(--paper-ink);
         }
         .tape {
           position: absolute;
@@ -170,18 +171,18 @@ export default function Photos() {
           transform: translateX(-50%) rotate(-4deg);
           width: 60px;
           height: 16px;
-          background: rgba(234, 210, 140, 0.5);
+          background: var(--tape);
           box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
         }
         .lightbox {
           position: fixed;
           inset: 0;
           z-index: 500;
-          background: rgba(20, 18, 14, 0.75);
+          background: var(--lightbox-bg);
           backdrop-filter: blur(10px);
           display: grid;
           place-items: center;
-          padding: 24px;
+          padding: var(--space-6);
           animation: lbIn 0.3s ease;
         }
         @keyframes lbIn {
@@ -193,7 +194,7 @@ export default function Photos() {
           }
         }
         .lb-frame {
-          background: #f5f1ea;
+          background: var(--paper);
           padding: 18px 18px 52px;
           max-width: 520px;
           width: 100%;
@@ -219,15 +220,15 @@ export default function Photos() {
         .lb-cap {
           text-align: center;
           font-size: 28px;
-          margin-top: 16px;
+          margin-top: var(--space-4);
           font-style: italic;
           color: #1a1814;
         }
         .lb-close,
         .lb-nav {
           position: absolute;
-          background: rgba(255, 255, 255, 0.12);
-          color: #fff;
+          background: var(--ink-12);
+          color: var(--white);
           border: 0.5px solid rgba(255, 255, 255, 0.25);
           width: 44px;
           height: 44px;
@@ -238,33 +239,33 @@ export default function Photos() {
           transition: background 0.2s;
         }
         .lb-close {
-          top: 20px;
-          right: 20px;
+          top: var(--space-5);
+          right: var(--space-5);
         }
         .lb-close:hover,
         .lb-nav:hover {
           background: rgba(255, 255, 255, 0.22);
         }
         .lb-prev {
-          left: 24px;
+          left: var(--space-6);
           top: 50%;
           transform: translateY(-50%);
         }
         .lb-next {
-          right: 24px;
+          right: var(--space-6);
           top: 50%;
           transform: translateY(-50%);
         }
-        @media (max-width: 880px) {
+        @media (max-width: 720px) {
           .polaroids {
             grid-template-columns: repeat(3, 1fr);
             gap: 18px;
           }
         }
-        @media (max-width: 560px) {
+        @media (max-width: 520px) {
           .polaroids {
             grid-template-columns: repeat(2, 1fr);
-            gap: 16px;
+            gap: var(--space-4);
           }
         }
       `}</style>

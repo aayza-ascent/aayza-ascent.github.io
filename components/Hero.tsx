@@ -1,46 +1,17 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useRef } from "react";
+import Blobs from "./hero/Blobs";
+
+const STATS: [string, string][] = [
+  ["7", "years shipping"],
+  ["1st", "class honours"],
+  ["6", "years working remotely"],
+  ["100%", "outgoing, funny, and humble (self-rated)"],
+];
 
 export default function Hero() {
-  const blobRef = useRef<HTMLDivElement>(null);
-  const blob2Ref = useRef<HTMLDivElement>(null);
-  const blob3Ref = useRef<HTMLDivElement>(null);
   const heroRef = useRef<HTMLElement>(null);
-
-  useEffect(() => {
-    let tx = window.innerWidth / 2;
-    let ty = window.innerHeight / 2;
-    let cx = tx;
-    let cy = ty;
-    let raf = 0;
-    const onMove = (e: MouseEvent) => {
-      const r = heroRef.current?.getBoundingClientRect();
-      if (!r) return;
-      tx = e.clientX - r.left;
-      ty = e.clientY - r.top;
-    };
-    const tick = () => {
-      cx += (tx - cx) * 0.08;
-      cy += (ty - cy) * 0.08;
-      if (blobRef.current) {
-        blobRef.current.style.transform = `translate(${cx - 280}px, ${cy - 280}px)`;
-      }
-      if (blob2Ref.current) {
-        blob2Ref.current.style.transform = `translate(${cx * 0.6 - 160}px, ${cy * 0.6 - 160}px)`;
-      }
-      if (blob3Ref.current) {
-        blob3Ref.current.style.transform = `translate(${cx * 0.9 - 120}px, ${cy * 0.9 - 120}px)`;
-      }
-      raf = requestAnimationFrame(tick);
-    };
-    raf = requestAnimationFrame(tick);
-    window.addEventListener("mousemove", onMove);
-    return () => {
-      cancelAnimationFrame(raf);
-      window.removeEventListener("mousemove", onMove);
-    };
-  }, []);
 
   return (
     <section
@@ -53,9 +24,7 @@ export default function Hero() {
         overflow: "hidden",
       }}
     >
-      <div ref={blobRef} className="blob blob-peri" aria-hidden />
-      <div ref={blob2Ref} className="blob blob-blush" aria-hidden />
-      <div ref={blob3Ref} className="blob blob-mint" aria-hidden />
+      <Blobs containerRef={heroRef} />
 
       <svg aria-hidden className="hero-grid" width="100%" height="100%">
         <defs>
@@ -78,26 +47,6 @@ export default function Hero() {
 
       <div className="container hero-inner">
         <div className="hero-top row">
-          {/* <span
-            className="chip"
-            style={{
-              background: "rgba(110,231,183,.12)",
-              borderColor: "rgba(110,231,183,.3)",
-              color: "var(--mint)",
-            }}
-          >
-            <span
-              style={{
-                width: 8,
-                height: 8,
-                borderRadius: 99,
-                background: "#6EE7B7",
-                boxShadow:
-                  "0 0 0 3px rgba(110,231,183,.2), 0 0 12px rgba(110,231,183,.6)",
-              }}
-            />
-            available for select work
-          </span> */}
           <span className="chip mono">glasgow · scotland · remote</span>
         </div>
 
@@ -105,8 +54,6 @@ export default function Hero() {
           <span className="line-a">Hi, I&rsquo;m</span>
           <span className="line-b">
             <span className="name-word">Aayza.</span>
-            {/* <span className="name-word">Ahmed</span> */}
-            {/* <span className="name-dot">.</span> */}
           </span>
           <span className="line-c serif">
             <em>a software engineer</em> who likes
@@ -146,14 +93,7 @@ export default function Hero() {
         </div>
 
         <div className="hero-stats">
-          {(
-            [
-              ["7", "years shipping"],
-              ["1st", "class honours"],
-              ["6", "years working remotely"],
-              ["100%", "outgoing, funny, and humble (self-rated)"],
-            ] as const
-          ).map(([n, l]) => (
+          {STATS.map(([n, l]) => (
             <div key={l} className="stat">
               <div className="stat-n serif">{n}</div>
               <div className="stat-l mono">{l}</div>
@@ -179,32 +119,6 @@ export default function Hero() {
           pointer-events: none;
           opacity: 0.8;
         }
-        :global(.blob) {
-          position: absolute;
-          left: 0;
-          top: 0;
-          border-radius: 50%;
-          filter: blur(90px);
-          pointer-events: none;
-          z-index: 1;
-          mix-blend-mode: screen;
-          opacity: calc(0.85 * var(--motion, 1) + 0.2);
-        }
-        :global(.blob-peri) {
-          width: 620px;
-          height: 620px;
-          background: radial-gradient(circle, #a78bfa 0%, transparent 70%);
-        }
-        :global(.blob-blush) {
-          width: 360px;
-          height: 360px;
-          background: radial-gradient(circle, #ff6b9d 0%, transparent 70%);
-        }
-        :global(.blob-mint) {
-          width: 280px;
-          height: 280px;
-          background: radial-gradient(circle, #67e8f9 0%, transparent 70%);
-        }
 
         .hero-top {
           margin-top: 40px;
@@ -215,7 +129,7 @@ export default function Hero() {
           font-size: clamp(56px, 10vw, 140px);
           line-height: 0.98;
           letter-spacing: -0.025em;
-          margin: 34px 0 20px;
+          margin: 34px 0 var(--space-5);
         }
         :global(.hero-name .line-a) {
           display: block;
@@ -225,11 +139,11 @@ export default function Hero() {
           color: var(--muted);
           letter-spacing: 0.02em;
           text-transform: uppercase;
-          margin-bottom: 12px;
+          margin-bottom: var(--space-3);
         }
         :global(.hero-name .line-b) {
           display: flex;
-          gap: 28px;
+          gap: var(--space-7);
           flex-wrap: wrap;
           align-items: baseline;
         }
@@ -244,30 +158,12 @@ export default function Hero() {
         :global(.hero-name .name-word:hover) {
           transform: translateY(-6px) rotate(-2deg);
         }
-        :global(.hero-name .name-dot) {
-          display: inline-block;
-          color: var(--accent);
-          font-style: italic;
-          animation: dotPulse 2s ease-in-out infinite;
-          margin-left: -0.15em;
-        }
-        @keyframes dotPulse {
-          0%,
-          100% {
-            transform: scale(1);
-            color: var(--accent);
-          }
-          50% {
-            transform: scale(1.2);
-            color: var(--peri);
-          }
-        }
         :global(.hero-name .line-c) {
           display: block;
           font-size: 0.52em;
           line-height: 1.15;
           color: var(--ink-soft);
-          margin-top: 20px;
+          margin-top: var(--space-5);
           max-width: 880px;
         }
         :global(.hero-name .hl) {
@@ -288,7 +184,7 @@ export default function Hero() {
           font-size: clamp(15px, 1.2vw, 17px);
           line-height: 1.55;
           margin-top: 18px;
-          margin-bottom: 32px;
+          margin-bottom: var(--space-8);
         }
         .hero-sub :global(b) {
           color: var(--ink);
@@ -305,12 +201,12 @@ export default function Hero() {
           gap: 2px;
           margin-top: 72px;
           padding: 6px;
-          border-radius: 22px;
+          border-radius: var(--radius-lg);
           background: rgba(26, 22, 48, 0.5);
           backdrop-filter: blur(12px);
-          border: 0.5px solid rgba(255, 255, 255, 0.08);
+          border: 0.5px solid var(--ink-08);
           box-shadow:
-            0 14px 40px rgba(0, 0, 0, 0.35),
+            0 14px 40px var(--scrim-35),
             inset 0 1px 0 rgba(255, 255, 255, 0.05);
         }
         .stat {
@@ -332,12 +228,12 @@ export default function Hero() {
           color: var(--muted);
           letter-spacing: 0.1em;
           text-transform: uppercase;
-          margin-top: 8px;
+          margin-top: var(--space-2);
         }
 
         .scroll-cue {
           position: absolute;
-          bottom: 24px;
+          bottom: var(--space-6);
           left: 50%;
           transform: translateX(-50%);
           display: flex;
@@ -368,7 +264,7 @@ export default function Hero() {
           }
         }
 
-        @media (max-width: 640px) {
+        @media (max-width: 720px) {
           .hero-stats {
             grid-template-columns: repeat(2, 1fr);
           }

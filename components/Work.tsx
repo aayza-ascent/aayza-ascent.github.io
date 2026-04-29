@@ -3,7 +3,13 @@
 import { useState } from 'react';
 import { WORK, type Work as WorkItemT } from '@/lib/data';
 
-function WorkItem({ item, open, onToggle }: { item: WorkItemT; open: boolean; onToggle: () => void }) {
+interface WorkItemProps {
+  item: WorkItemT;
+  open: boolean;
+  onToggle: () => void;
+}
+
+function WorkItem({ item, open, onToggle }: WorkItemProps) {
   return (
     <div className={`work-card ${open ? 'open' : ''}`}>
       <button className="work-head" onClick={onToggle} aria-expanded={open}>
@@ -53,15 +59,15 @@ function WorkItem({ item, open, onToggle }: { item: WorkItemT; open: boolean; on
 
       <style jsx>{`
         .work-card {
-          border-radius: 20px;
+          border-radius: var(--radius-md);
           background: linear-gradient(145deg, var(--surface), var(--surface-2));
-          box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.05);
-          border: 0.5px solid rgba(255, 255, 255, 0.06);
+          box-shadow: 10px 10px 30px var(--scrim-40), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+          border: 0.5px solid var(--ink-06);
           overflow: hidden;
           transition: all 0.3s ease;
         }
         .work-card.open {
-          box-shadow: 14px 14px 40px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+          box-shadow: 14px 14px 40px var(--scrim-50), inset 0 1px 0 var(--ink-08);
           border-color: rgba(167, 139, 250, 0.25);
         }
         .work-head {
@@ -69,7 +75,7 @@ function WorkItem({ item, open, onToggle }: { item: WorkItemT; open: boolean; on
           gap: 18px;
           align-items: center;
           width: 100%;
-          padding: 20px 22px;
+          padding: var(--space-5) 22px;
           background: none;
           border: 0;
           cursor: pointer;
@@ -85,9 +91,9 @@ function WorkItem({ item, open, onToggle }: { item: WorkItemT; open: boolean; on
           place-items: center;
           font-family: 'Instrument Serif', serif;
           font-size: 24px;
-          color: #fff;
+          color: var(--white);
           flex-shrink: 0;
-          box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.3), 0 6px 16px rgba(0, 0, 0, 0.4);
+          box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.3), 0 6px 16px var(--scrim-40);
         }
         .work-head-main {
           flex: 1;
@@ -139,7 +145,7 @@ function WorkItem({ item, open, onToggle }: { item: WorkItemT; open: boolean; on
           list-style: none;
           margin-bottom: 18px;
           display: grid;
-          gap: 8px;
+          gap: var(--space-2);
         }
         .work-highlights li {
           display: flex;
@@ -153,12 +159,12 @@ function WorkItem({ item, open, onToggle }: { item: WorkItemT; open: boolean; on
           font-weight: 700;
           flex-shrink: 0;
         }
-        @media (max-width: 640px) {
+        @media (max-width: 720px) {
           .work-body-inner {
             padding: 0 22px 22px 22px;
           }
           .work-head {
-            padding: 16px;
+            padding: var(--space-4);
           }
           .work-logo {
             width: 44px;
@@ -188,7 +194,7 @@ export default function Work() {
         <div className="timeline">
           <div className="rail" aria-hidden />
           {WORK.map((w, i) => (
-            <div className="timeline-row" key={i}>
+            <div className="timeline-row" key={w.company}>
               <div className="node" style={{ background: w.color }} />
               <WorkItem item={w} open={open === i} onToggle={() => setOpen(open === i ? -1 : i)} />
             </div>
@@ -211,7 +217,7 @@ export default function Work() {
         }
         .timeline-row {
           position: relative;
-          margin-bottom: 16px;
+          margin-bottom: var(--space-4);
         }
         .timeline-row .node {
           position: absolute;
@@ -221,7 +227,7 @@ export default function Work() {
           height: 14px;
           border-radius: 50%;
           border: 3px solid var(--cream);
-          box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.1), 0 0 20px currentColor, 0 4px 10px rgba(0, 0, 0, 0.4);
+          box-shadow: 0 0 0 1px var(--ink-10), 0 0 20px currentColor, 0 4px 10px var(--scrim-40);
         }
       `}</style>
     </section>

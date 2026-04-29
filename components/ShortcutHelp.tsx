@@ -166,16 +166,16 @@ export default function ShortcutHelp() {
         }
         .kb-fab {
           position: fixed;
-          left: 16px;
-          bottom: 16px;
+          left: var(--space-4);
+          bottom: var(--space-4);
           z-index: 91;
           width: 40px;
           height: 40px;
           border-radius: 50%;
           background: rgba(26, 22, 48, 0.78);
           backdrop-filter: blur(18px);
-          border: 0.5px solid rgba(255, 255, 255, 0.08);
-          box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+          border: 0.5px solid var(--ink-08);
+          box-shadow: 0 8px 24px var(--scrim-40);
           cursor: pointer;
           display: grid;
           place-items: center;
@@ -187,7 +187,7 @@ export default function ShortcutHelp() {
         }
         .kb-hint {
           position: fixed;
-          left: 16px;
+          left: var(--space-4);
           bottom: 66px;
           z-index: 92;
           display: flex;
@@ -195,8 +195,8 @@ export default function ShortcutHelp() {
           gap: 10px;
           padding: 10px 14px;
           background: linear-gradient(135deg, var(--peri), var(--accent));
-          color: #fff;
-          border-radius: 12px;
+          color: var(--white);
+          border-radius: var(--radius-sm);
           cursor: pointer;
           font-size: 12px;
           font-weight: 500;
@@ -215,9 +215,9 @@ export default function ShortcutHelp() {
           z-index: -1;
         }
         .kb-hint-x {
-          background: rgba(255, 255, 255, 0.2);
+          background: var(--ink-20);
           border: 0;
-          color: #fff;
+          color: var(--white);
           width: 18px;
           height: 18px;
           border-radius: 50%;
@@ -244,7 +244,7 @@ export default function ShortcutHelp() {
           backdrop-filter: blur(8px);
           display: grid;
           place-items: center;
-          padding: 20px;
+          padding: var(--space-5);
           animation: fadeIn 0.2s ease;
         }
         @keyframes fadeIn {
@@ -258,10 +258,10 @@ export default function ShortcutHelp() {
         .kb-modal {
           width: 100%;
           max-width: 520px;
-          padding: 32px;
+          padding: var(--space-8);
           background: linear-gradient(145deg, var(--surface), var(--surface-2));
-          border: 0.5px solid rgba(255, 255, 255, 0.1);
-          border-radius: 20px;
+          border: 0.5px solid var(--ink-10);
+          border-radius: var(--radius-md);
           box-shadow: 0 40px 80px rgba(0, 0, 0, 0.6);
           animation: kbPop 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
         }
@@ -279,12 +279,12 @@ export default function ShortcutHelp() {
           display: flex;
           justify-content: space-between;
           align-items: flex-start;
-          margin-bottom: 24px;
+          margin-bottom: var(--space-6);
         }
         .kb-close {
           appearance: none;
           border: 0;
-          background: rgba(255, 255, 255, 0.06);
+          background: var(--ink-06);
           color: var(--ink);
           width: 32px;
           height: 32px;
@@ -294,19 +294,19 @@ export default function ShortcutHelp() {
           line-height: 1;
         }
         .kb-close:hover {
-          background: rgba(255, 255, 255, 0.12);
+          background: var(--ink-12);
         }
         .kb-grid {
           display: grid;
           grid-template-columns: 1fr 1fr;
-          gap: 12px 20px;
-          margin-bottom: 20px;
+          gap: var(--space-3) var(--space-5);
+          margin-bottom: var(--space-5);
         }
         .kb-row {
           display: flex;
           align-items: center;
-          gap: 12px;
-          padding: 8px 0;
+          gap: var(--space-3);
+          padding: var(--space-2) 0;
           color: var(--ink-soft);
           font-size: 13px;
         }
@@ -314,10 +314,10 @@ export default function ShortcutHelp() {
           font-size: 11px;
           color: var(--muted);
           text-align: center;
-          border-top: 1px dashed rgba(255, 255, 255, 0.1);
-          padding-top: 16px;
+          border-top: 1px dashed var(--ink-10);
+          padding-top: var(--space-4);
         }
-        @media (max-width: 600px) {
+        @media (max-width: 720px) {
           .kb-grid {
             grid-template-columns: 1fr;
           }

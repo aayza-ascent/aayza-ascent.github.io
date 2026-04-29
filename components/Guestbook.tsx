@@ -10,6 +10,9 @@ import {
 
 const GRID_COLS = 48;
 const GRID_ROWS = 24;
+// Palette is intentionally hex (not var() refs) because it is content the user
+// paints with — values flow through inline `style` attributes for each swatch.
+// First five mirror design tokens (--accent, --peri, --mint, --lemon, --cyan).
 const COLORS = [
   "#FF6B9D",
   "#A78BFA",
@@ -348,20 +351,20 @@ export default function Guestbook() {
         .gb-wrap {
           display: flex;
           flex-direction: column;
-          gap: 16px;
+          gap: var(--space-4);
         }
         .gb-tools {
           padding: 14px 18px;
-          border-radius: 16px;
+          border-radius: var(--radius-md);
           background: linear-gradient(145deg, var(--surface), var(--surface-2));
-          border: 0.5px solid rgba(255, 255, 255, 0.06);
+          border: 0.5px solid var(--ink-06);
           box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
         }
         .gb-tools-row {
           display: flex;
           justify-content: space-between;
           align-items: center;
-          gap: 20px;
+          gap: var(--space-5);
           flex-wrap: wrap;
         }
         .gb-palette {
@@ -391,10 +394,10 @@ export default function Guestbook() {
         }
         .gb-tool {
           appearance: none;
-          border: 1px solid rgba(255, 255, 255, 0.1);
-          background: rgba(255, 255, 255, 0.04);
+          border: 1px solid var(--ink-10);
+          background: var(--ink-04);
           color: var(--ink-soft);
-          padding: 8px 14px;
+          padding: var(--space-2) 14px;
           border-radius: 8px;
           cursor: pointer;
           font-family: "JetBrains Mono", monospace;
@@ -402,12 +405,12 @@ export default function Guestbook() {
           transition: all 0.2s ease;
         }
         .gb-tool:hover {
-          background: rgba(255, 255, 255, 0.08);
+          background: var(--ink-08);
           color: var(--ink);
         }
         .gb-tool.active {
           background: var(--peri);
-          color: #fff;
+          color: var(--white);
           border-color: var(--peri);
         }
         .gb-tool.danger:hover {
@@ -419,13 +422,13 @@ export default function Guestbook() {
           position: relative;
           width: 100%;
           aspect-ratio: ${GRID_COLS} / ${GRID_ROWS};
-          border-radius: 16px;
+          border-radius: var(--radius-md);
           overflow: hidden;
           background: linear-gradient(145deg, #0a0716, #14102a);
           box-shadow:
-            inset 0 0 0 1px rgba(255, 255, 255, 0.06),
-            inset 0 2px 20px rgba(0, 0, 0, 0.5),
-            0 20px 60px rgba(0, 0, 0, 0.4);
+            inset 0 0 0 1px var(--ink-06),
+            inset 0 2px 20px var(--scrim-50),
+            0 20px 60px var(--scrim-40);
           touch-action: none;
           user-select: none;
         }
@@ -441,7 +444,7 @@ export default function Guestbook() {
           transition: background 0.15s ease;
         }
         .gb-cell:hover {
-          box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.2);
+          box-shadow: inset 0 0 0 1px var(--ink-20);
         }
         .gb-ruler {
           position: absolute;
@@ -473,12 +476,12 @@ export default function Guestbook() {
         }
         .gb-foot {
           display: flex;
-          gap: 32px;
+          gap: var(--space-8);
           align-items: center;
           padding: 14px 18px;
           background: linear-gradient(145deg, var(--surface), var(--surface-2));
-          border-radius: 16px;
-          border: 0.5px solid rgba(255, 255, 255, 0.06);
+          border-radius: var(--radius-md);
+          border: 0.5px solid var(--ink-06);
           flex-wrap: wrap;
         }
         .gb-stat {
