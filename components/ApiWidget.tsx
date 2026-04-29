@@ -200,9 +200,6 @@ export default function ApiWidget() {
             >
               aayzaahmed.wfh@gmail.com
             </a>
-            <a href="tel:+447397865034" className="btn btn-ghost">
-              +44 7397 865034
-            </a>
             <a
               href="https://linkedin.com/in/aayza-ahmed"
               target="_blank"
@@ -218,14 +215,6 @@ export default function ApiWidget() {
               className="btn btn-ghost"
             >
               github ↗
-            </a>
-            <a
-              href="/cv.pdf"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn btn-ghost"
-            >
-              cv (pdf) ↗
             </a>
           </div>
         </div>
