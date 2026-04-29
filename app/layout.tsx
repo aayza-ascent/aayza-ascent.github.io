@@ -1,10 +1,36 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import "./globals.css";
 
+const SITE_URL = "https://aayza-ascent.github.io";
+const TITLE = "Aayza Ahmed — Software Engineer";
+const DESCRIPTION =
+  "Portfolio of Aayza Ahmed — a Glasgow-based software engineer building full-stack TypeScript, AI-powered workflow automation, and modular dashboards.";
+
 export const metadata: Metadata = {
-  title: "Aayza Ahmed = Software Engineer",
-  description:
-    "Portfolio of Aayza Ahmed - a Glasgow-based software engineer building full-stack TypeScript, AI-powered workflow automation, and modular dashboards.",
+  metadataBase: new URL(SITE_URL),
+  title: TITLE,
+  description: DESCRIPTION,
+  alternates: { canonical: "/" },
+  openGraph: {
+    title: TITLE,
+    description: DESCRIPTION,
+    url: SITE_URL,
+    siteName: "Aayza Ahmed",
+    type: "website",
+    locale: "en_GB",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: TITLE,
+    description: DESCRIPTION,
+  },
+  robots: { index: true, follow: true },
+};
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  themeColor: "#0E0B1A",
 };
 
 export default function RootLayout({
@@ -19,7 +45,7 @@ export default function RootLayout({
         <link
           rel="preconnect"
           href="https://fonts.gstatic.com"
-          crossOrigin=""
+          crossOrigin="anonymous"
         />
         {/* eslint-disable-next-line @next/next/no-page-custom-font */}
         <link

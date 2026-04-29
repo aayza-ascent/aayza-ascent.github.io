@@ -66,16 +66,16 @@ function FlipCard({ h }: { h: Hobby }) {
         .face {
           position: absolute;
           inset: 0;
-          border-radius: 22px;
-          padding: 22px;
+          border-radius: var(--radius-lg);
+          padding: var(--space-6);
           display: flex;
           flex-direction: column;
           justify-content: space-between;
           backface-visibility: hidden;
           -webkit-backface-visibility: hidden;
-          border: 0.5px solid rgba(255, 255, 255, 0.08);
+          border: 0.5px solid var(--ink-08);
           box-shadow:
-            10px 10px 30px rgba(0, 0, 0, 0.4),
+            10px 10px 30px var(--scrim-40),
             inset 0 1px 0 rgba(255, 255, 255, 0.05);
           text-align: left;
         }
@@ -85,7 +85,7 @@ function FlipCard({ h }: { h: Hobby }) {
         }
         .back {
           transform: rotateY(180deg);
-          color: #0e0b1a;
+          color: var(--cream);
         }
         .back :global(p) {
           font-family: "Instrument Serif", serif;
@@ -112,7 +112,7 @@ function FlipCard({ h }: { h: Hobby }) {
         .emoji-wrap {
           width: 80px;
           height: 80px;
-          border-radius: 20px;
+          border-radius: var(--radius-md);
           display: grid;
           place-items: center;
           filter: blur(0);
@@ -183,22 +183,22 @@ export default function Hobbies() {
         .flip-grid {
           display: grid;
           grid-template-columns: repeat(3, 1fr);
-          gap: 20px;
-          margin-bottom: 64px;
+          gap: var(--space-5);
+          margin-bottom: var(--space-12);
         }
-        .facts {
+        .facts.glass {
           display: flex;
           align-items: center;
           justify-content: space-between;
-          gap: 24px;
-          padding: 28px 32px;
+          gap: var(--space-6);
+          padding: var(--space-7) var(--space-8);
           flex-wrap: wrap;
           background: linear-gradient(
             135deg,
             rgba(167, 139, 250, 0.1),
             rgba(255, 138, 184, 0.08)
-          ) !important;
-          border: 0.5px solid rgba(167, 139, 250, 0.2) !important;
+          );
+          border: 0.5px solid rgba(167, 139, 250, 0.2);
         }
         .facts-left {
           flex: 1;
@@ -238,7 +238,7 @@ export default function Hobbies() {
             transform: rotate(360deg);
           }
         }
-        @media (max-width: 820px) {
+        @media (max-width: 720px) {
           .flip-grid {
             grid-template-columns: repeat(2, 1fr);
           }

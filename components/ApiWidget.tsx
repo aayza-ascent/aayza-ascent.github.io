@@ -247,10 +247,10 @@ export default function ApiWidget() {
           }
         }
         .api-card {
-          padding: 32px;
+          padding: var(--space-8);
           display: flex;
           flex-direction: column;
-          gap: 24px;
+          gap: var(--space-6);
           background: linear-gradient(
             145deg,
             rgba(26, 22, 48, 0.85),
@@ -263,8 +263,8 @@ export default function ApiWidget() {
           align-items: center;
           font-size: 11px;
           color: var(--ink-soft);
-          padding-bottom: 16px;
-          border-bottom: 1px dashed rgba(255, 255, 255, 0.1);
+          padding-bottom: var(--space-4);
+          border-bottom: 1px dashed var(--ink-10);
         }
         .api-meta .dot {
           display: inline-block;
@@ -280,8 +280,8 @@ export default function ApiWidget() {
           display: flex;
           flex-direction: column;
           justify-content: center;
-          gap: 24px;
-          padding: 20px 0;
+          gap: var(--space-6);
+          padding: var(--space-5) 0;
         }
         .joke-setup {
           font-size: clamp(28px, 3.5vw, 42px);
@@ -323,24 +323,24 @@ export default function ApiWidget() {
         .api-actions {
           display: flex;
           align-items: center;
-          gap: 16px;
+          gap: var(--space-4);
           flex-wrap: wrap;
-          padding-top: 16px;
-          border-top: 1px dashed rgba(255, 255, 255, 0.1);
+          padding-top: var(--space-4);
+          border-top: 1px dashed var(--ink-10);
         }
         .skeleton {
           display: flex;
           flex-direction: column;
-          gap: 14px;
+          gap: var(--space-3);
         }
         .sk-line {
           height: 28px;
-          border-radius: 8px;
+          border-radius: var(--space-2);
           background: linear-gradient(
             90deg,
-            rgba(255, 255, 255, 0.04),
-            rgba(255, 255, 255, 0.12),
-            rgba(255, 255, 255, 0.04)
+            var(--ink-04),
+            var(--ink-12),
+            var(--ink-04)
           );
           background-size: 200% 100%;
           animation: skShine 1.2s linear infinite;
@@ -364,8 +364,8 @@ export default function ApiWidget() {
           );
           border: 0.5px solid rgba(167, 139, 250, 0.25);
           box-shadow:
-            0 30px 80px rgba(0, 0, 0, 0.4),
-            inset 0 1px 0 rgba(255, 255, 255, 0.08);
+            0 30px 80px var(--scrim-40),
+            inset 0 1px 0 var(--ink-08);
           position: relative;
           overflow: hidden;
         }
@@ -405,12 +405,12 @@ export default function ApiWidget() {
         }
         .foot {
           margin-top: 100px;
-          padding: 28px 0;
+          padding: var(--space-7) 0;
           border-top: 1px dashed rgba(255, 255, 255, 0.15);
           display: flex;
           justify-content: space-between;
           flex-wrap: wrap;
-          gap: 12px;
+          gap: var(--space-3);
           font-size: 11px;
         }
       `}</style>

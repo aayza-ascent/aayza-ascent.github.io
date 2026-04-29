@@ -2,6 +2,25 @@
   "name": "aayza-ascent-portfolio",
   "version": "0.1.0",
   "private": true,
+  "description": "Aayza Ahmed's personal portfolio — Next.js 14 + TypeScript, statically exported to GitHub Pages.",
+  "author": "Aayza Ahmed <aayza@ascentplatform.io>",
+  "license": "MIT",
+  "homepage": "https://aayza-ascent.github.io",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/aayza-ascent/aayza-ascent.github.io"
+  },
+  "keywords": [
+    "portfolio",
+    "nextjs",
+    "typescript",
+    "react",
+    "static-site"
+  ],
+  "engines": {
+    "node": ">=20.0.0",
+    "npm": ">=9.0.0"
+  },
   "scripts": {
     "dev": "next dev",
     "build": "next build",

@@ -60,7 +60,7 @@ export default function LiveSites() {
                   className="live-preview-tag mono"
                   style={{
                     background: `${s.tint}22`,
-                    color: "#fff",
+                    color: "var(--white)",
                     borderColor: `${s.tint}66`,
                   }}
                 >
@@ -123,7 +123,7 @@ export default function LiveSites() {
         .live-grid {
           display: grid;
           grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
-          gap: 24px;
+          gap: var(--space-6);
         }
         .live-card {
           display: flex;
@@ -132,7 +132,7 @@ export default function LiveSites() {
           overflow: hidden;
           position: relative;
           background: linear-gradient(145deg, var(--surface), var(--surface-2));
-          border: 0.5px solid rgba(255, 255, 255, 0.06);
+          border: 0.5px solid var(--ink-06);
           text-decoration: none;
           color: inherit;
           transition:
@@ -178,7 +178,7 @@ export default function LiveSites() {
           background: rgba(14, 11, 26, 0.35);
           backdrop-filter: blur(10px);
           -webkit-backdrop-filter: blur(10px);
-          border-bottom: 0.5px solid rgba(255, 255, 255, 0.08);
+          border-bottom: 0.5px solid var(--ink-08);
         }
         .chrome-dots {
           display: flex;
@@ -198,7 +198,7 @@ export default function LiveSites() {
           background: rgba(14, 11, 26, 0.4);
           padding: 4px 10px;
           border-radius: 6px;
-          border: 0.5px solid rgba(255, 255, 255, 0.06);
+          border: 0.5px solid var(--ink-06);
           white-space: nowrap;
           overflow: hidden;
           text-overflow: ellipsis;
@@ -228,7 +228,7 @@ export default function LiveSites() {
           left: 14px;
           z-index: 2;
           padding: 4px 10px;
-          border-radius: 999px;
+          border-radius: var(--radius-pill);
           font-size: 10px;
           letter-spacing: 0.1em;
           text-transform: uppercase;
@@ -237,7 +237,7 @@ export default function LiveSites() {
           -webkit-backdrop-filter: blur(10px);
         }
         .live-body {
-          padding: 24px;
+          padding: var(--space-6);
           display: flex;
           flex-direction: column;
           gap: 14px;
@@ -265,7 +265,7 @@ export default function LiveSites() {
           border-radius: 50%;
           display: grid;
           place-items: center;
-          color: #0e0b1a;
+          color: var(--cream);
           flex-shrink: 0;
           transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
           box-shadow: 0 4px 14px currentColor;
@@ -280,10 +280,10 @@ export default function LiveSites() {
         }
         .live-stats {
           display: flex;
-          gap: 20px;
+          gap: var(--space-5);
           padding-top: 14px;
           margin-top: 4px;
-          border-top: 1px dashed rgba(255, 255, 255, 0.08);
+          border-top: 1px dashed var(--ink-08);
           flex-wrap: wrap;
         }
         .live-stat {
@@ -319,7 +319,7 @@ export default function LiveSites() {
           background: linear-gradient(
             to right,
             transparent,
-            rgba(255, 255, 255, 0.06),
+            var(--ink-06),
             transparent
           );
           transform: skewX(-20deg);
@@ -329,7 +329,7 @@ export default function LiveSites() {
         .live-card:hover .live-shine {
           left: 140%;
         }
-        @media (max-width: 640px) {
+        @media (max-width: 720px) {
           .live-grid {
             grid-template-columns: 1fr;
           }

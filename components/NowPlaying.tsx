@@ -1,82 +1,11 @@
-'use client';
+"use client";
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState } from "react";
+import CoverArt from "./now-playing/CoverArt";
+import Controls from "./now-playing/Controls";
+import { TRACKS } from "./now-playing/data";
 
-type Track = {
-  title: string;
-  artist: string;
-  album: string;
-  color: string;
-  year: string;
-  cover: string;
-};
-
-const TRACKS: Track[] = [
-  {
-    title: '3 Nights',
-    artist: 'Dominic Fike',
-    album: "Don't Forget About Me, Demos",
-    color: '#FB923C',
-    year: '2018',
-    cover: 'linear-gradient(135deg,#FB923C 0%, #F472B6 100%)',
-  },
-  {
-    title: 'Stick Season',
-    artist: 'Noah Kahan',
-    album: 'Stick Season',
-    color: '#D97706',
-    year: '2022',
-    cover: 'linear-gradient(135deg,#14532D 0%, #D97706 100%)',
-  },
-  {
-    title: 'Sue Me',
-    artist: 'Audrey Hobert',
-    album: 'Who’s the Clown?',
-    color: '#F0ABFC',
-    year: '2024',
-    cover: 'linear-gradient(135deg,#F0ABFC 0%, #A78BFA 100%)',
-  },
-  {
-    title: 'Shallow Water',
-    artist: 'Dexter and the Moonrocks',
-    album: 'Wake Up Call',
-    color: '#67E8F9',
-    year: '2024',
-    cover: 'linear-gradient(135deg,#0F1420 0%, #67E8F9 100%)',
-  },
-  {
-    title: 'Paranoid Android',
-    artist: 'Radiohead',
-    album: 'OK Computer',
-    color: '#A7F3D0',
-    year: '1997',
-    cover: 'linear-gradient(135deg,#1E293B 0%, #A7F3D0 100%)',
-  },
-  {
-    title: 'Scar Tissue',
-    artist: 'Red Hot Chili Peppers',
-    album: 'Californication',
-    color: '#DC2626',
-    year: '1999',
-    cover: 'linear-gradient(135deg,#450A0A 0%, #DC2626 100%)',
-  },
-  {
-    title: 'Starburster',
-    artist: 'Fontaines D.C.',
-    album: 'Romance',
-    color: '#84CC16',
-    year: '2024',
-    cover: 'linear-gradient(135deg,#14532D 0%, #84CC16 100%)',
-  },
-  {
-    title: 'Many Times',
-    artist: 'Dijon',
-    album: 'Absolutely',
-    color: '#FBBF24',
-    year: '2021',
-    cover: 'linear-gradient(135deg,#7C2D12 0%, #FBBF24 100%)',
-  },
-];
+const DURATION_SECONDS = 235;
 
 export default function NowPlaying() {
   const [idx, setIdx] = useState(0);
@@ -108,62 +37,44 @@ export default function NowPlaying() {
     setProgress(0);
   };
 
-  const duration = 235;
-  const current = Math.floor((progress / 100) * duration);
-  const fmt = (s: number) => `${Math.floor(s / 60)}:${String(s % 60).padStart(2, '0')}`;
-
   return (
-    <div className={`np-wrap ${collapsed ? 'collapsed' : ''}`}>
+    <div className={`np-wrap ${collapsed ? "collapsed" : ""}`}>
       <div className="np-bar">
         <div className="np-left">
-          <div className="np-cover" style={{ background: track.cover }}>
-            <div className="np-cover-shine" />
-            {playing && (
-              <div className="np-eq">
-                <span style={{ animationDelay: '0s' }} />
-                <span style={{ animationDelay: '-.3s' }} />
-                <span style={{ animationDelay: '-.6s' }} />
-                <span style={{ animationDelay: '-.2s' }} />
-              </div>
-            )}
-          </div>
+          <CoverArt cover={track.cover} playing={playing} />
           <div className="np-meta">
             <div className="np-status mono">
-              <span className="np-live-dot" style={{ background: playing ? 'var(--mint)' : 'var(--muted)' }} />
-              {playing ? 'NOW PLAYING' : 'PAUSED'}
+              <span
+                className="np-live-dot"
+                style={{ background: playing ? "var(--mint)" : "var(--muted)" }}
+              />
+              {playing ? "NOW PLAYING" : "PAUSED"}
             </div>
             <div className="np-title">{track.title}</div>
             <div className="np-artist">
-              <span style={{ color: track.color }}>●</span> {track.artist} · <span className="mono">{track.album}</span>
+              <span style={{ color: track.color }}>●</span> {track.artist} ·{" "}
+              <span className="mono">{track.album}</span>
             </div>
           </div>
         </div>
 
-        <div className="np-center">
-          <div className="np-controls">
-            <button className="np-btn" onClick={prev} aria-label="Previous">
-              ⏮
-            </button>
-            <button className="np-btn np-play" onClick={() => setPlaying(!playing)} aria-label="Play/Pause">
-              {playing ? '⏸' : '▶'}
-            </button>
-            <button className="np-btn" onClick={next} aria-label="Next">
-              ⏭
-            </button>
-          </div>
-          <div className="np-progress">
-            <span className="np-time mono">{fmt(current)}</span>
-            <div className="np-track">
-              <div className="np-fill" style={{ width: `${progress}%`, background: track.color }} />
-              <div className="np-thumb" style={{ left: `${progress}%`, background: track.color }} />
-            </div>
-            <span className="np-time mono">{fmt(duration)}</span>
-          </div>
-        </div>
+        <Controls
+          playing={playing}
+          progress={progress}
+          duration={DURATION_SECONDS}
+          trackColor={track.color}
+          onPrev={prev}
+          onNext={next}
+          onTogglePlay={() => setPlaying(!playing)}
+        />
 
         <div className="np-right">
-          <button className="np-icon" title="Minimize" onClick={() => setCollapsed(!collapsed)}>
-            {collapsed ? '▲' : '▼'}
+          <button
+            className="np-icon"
+            title="Minimize"
+            onClick={() => setCollapsed(!collapsed)}
+          >
+            {collapsed ? "▲" : "▼"}
           </button>
         </div>
       </div>
@@ -171,9 +82,9 @@ export default function NowPlaying() {
       <style jsx>{`
         .np-wrap {
           position: fixed;
-          left: 16px;
-          right: 16px;
-          bottom: 16px;
+          left: var(--space-4);
+          right: var(--space-4);
+          bottom: var(--space-4);
           z-index: 90;
           pointer-events: none;
           transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
@@ -184,7 +95,7 @@ export default function NowPlaying() {
         .np-bar {
           display: grid;
           grid-template-columns: 1fr 1.2fr auto;
-          gap: 24px;
+          gap: var(--space-6);
           align-items: center;
           max-width: 1100px;
           margin: 0 auto;
@@ -192,9 +103,11 @@ export default function NowPlaying() {
           background: rgba(26, 22, 48, 0.78);
           backdrop-filter: blur(24px) saturate(180%);
           -webkit-backdrop-filter: blur(24px) saturate(180%);
-          border: 0.5px solid rgba(255, 255, 255, 0.08);
-          border-radius: 16px;
-          box-shadow: 0 16px 50px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.06);
+          border: 0.5px solid var(--ink-08);
+          border-radius: var(--radius-md);
+          box-shadow:
+            0 16px 50px var(--scrim-50),
+            inset 0 1px 0 var(--ink-06);
           pointer-events: auto;
         }
         .np-left {
@@ -202,54 +115,6 @@ export default function NowPlaying() {
           align-items: center;
           gap: 14px;
           min-width: 0;
-        }
-        .np-cover {
-          width: 52px;
-          height: 52px;
-          border-radius: 8px;
-          position: relative;
-          flex-shrink: 0;
-          overflow: hidden;
-          box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.15);
-        }
-        .np-cover-shine {
-          position: absolute;
-          inset: 0;
-          background: linear-gradient(135deg, rgba(255, 255, 255, 0.3) 0%, transparent 50%);
-          pointer-events: none;
-        }
-        .np-eq {
-          position: absolute;
-          bottom: 6px;
-          left: 6px;
-          display: flex;
-          gap: 2px;
-          align-items: end;
-          height: 14px;
-        }
-        .np-eq span {
-          width: 2px;
-          background: #fff;
-          border-radius: 1px;
-          animation: eq 1.1s ease-in-out infinite;
-        }
-        @keyframes eq {
-          0%,
-          100% {
-            height: 3px;
-          }
-          50% {
-            height: 14px;
-          }
-        }
-        .np-eq span:nth-child(2) {
-          animation-duration: 0.9s;
-        }
-        .np-eq span:nth-child(3) {
-          animation-duration: 1.3s;
-        }
-        .np-eq span:nth-child(4) {
-          animation-duration: 1s;
         }
         .np-meta {
           min-width: 0;
@@ -282,7 +147,7 @@ export default function NowPlaying() {
           }
         }
         .np-title {
-          font-family: 'Instrument Serif', serif;
+          font-family: "Instrument Serif", serif;
           font-size: 18px;
           line-height: 1.1;
           color: var(--ink);
@@ -298,98 +163,14 @@ export default function NowPlaying() {
           overflow: hidden;
           text-overflow: ellipsis;
         }
-        .np-center {
-          display: flex;
-          flex-direction: column;
-          gap: 6px;
-          align-items: stretch;
-        }
-        .np-controls {
-          display: flex;
-          gap: 8px;
-          justify-content: center;
-          align-items: center;
-        }
-        .np-btn {
-          appearance: none;
-          border: 0;
-          background: transparent;
-          cursor: pointer;
-          color: var(--ink-soft);
-          font-size: 13px;
-          padding: 4px 8px;
-          border-radius: 6px;
-          transition: all 0.2s ease;
-          line-height: 1;
-        }
-        .np-btn:hover {
-          color: var(--ink);
-          background: rgba(255, 255, 255, 0.05);
-        }
-        .np-play {
-          width: 28px;
-          height: 28px;
-          border-radius: 50%;
-          background: var(--ink);
-          color: var(--cream);
-          display: grid;
-          place-items: center;
-          font-size: 11px;
-        }
-        .np-play:hover {
-          background: var(--peri);
-          color: #fff;
-          transform: scale(1.08);
-        }
-        .np-progress {
-          display: flex;
-          align-items: center;
-          gap: 10px;
-        }
-        .np-time {
-          font-size: 10px;
-          color: var(--muted);
-          min-width: 32px;
-          text-align: center;
-        }
-        .np-track {
-          flex: 1;
-          height: 4px;
-          background: rgba(255, 255, 255, 0.08);
-          border-radius: 2px;
-          position: relative;
-          cursor: pointer;
-        }
-        .np-fill {
-          position: absolute;
-          left: 0;
-          top: 0;
-          bottom: 0;
-          border-radius: 2px;
-          transition: background 0.3s ease;
-        }
-        .np-thumb {
-          position: absolute;
-          top: 50%;
-          width: 10px;
-          height: 10px;
-          border-radius: 50%;
-          transform: translate(-50%, -50%);
-          opacity: 0;
-          transition: opacity 0.2s ease;
-          box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
-        }
-        .np-track:hover .np-thumb {
-          opacity: 1;
-        }
         .np-right {
           display: flex;
-          gap: 8px;
+          gap: var(--space-2);
         }
         .np-icon {
           appearance: none;
-          border: 1px solid rgba(255, 255, 255, 0.1);
-          background: rgba(255, 255, 255, 0.04);
+          border: 1px solid var(--ink-10);
+          background: var(--ink-04);
           color: var(--ink-soft);
           width: 28px;
           height: 28px;
@@ -400,26 +181,19 @@ export default function NowPlaying() {
           transition: all 0.2s ease;
         }
         .np-icon:hover {
-          background: rgba(255, 255, 255, 0.1);
+          background: var(--ink-10);
           color: var(--ink);
         }
-        @media (max-width: 820px) {
+        @media (max-width: 720px) {
           .np-wrap {
-            left: 8px;
-            right: 8px;
-            bottom: 8px;
+            left: var(--space-2);
+            right: var(--space-2);
+            bottom: var(--space-2);
           }
           .np-bar {
             grid-template-columns: 1fr auto;
-            gap: 12px;
-            padding: 8px 12px;
-          }
-          .np-center {
-            display: none;
-          }
-          .np-cover {
-            width: 42px;
-            height: 42px;
+            gap: var(--space-3);
+            padding: var(--space-2) var(--space-3);
           }
           .np-title {
             font-size: 15px;
