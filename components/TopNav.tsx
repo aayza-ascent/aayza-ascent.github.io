@@ -12,6 +12,7 @@ const LINKS: [string, string][] = [
   ['photos', 'Photos'],
   ['api', 'API'],
   ['guestbook', 'Guestbook'],
+  ['contact', 'Contact'],
 ];
 
 export function useActiveSection() {

@@ -342,11 +342,18 @@ export const HOBBIES: Hobby[] = [
 ];
 
 export const FACTS: string[] = [
-  "First-Class Honours with Distinction from the University of Strathclyde.",
-  "Seven years remote - Glasgow-based, distributed teams everywhere.",
-  "Year Programme Representative two years running at uni.",
-  "Completed a full Graduate Apprenticeship - industry + academic study in parallel.",
-  "I translate complex technical concepts for non-technical stakeholders for a living.",
+  "My graduation was on halloween! Grad-a-ween party was great",
+  "I like to microwave any dessert I eat (apart from ice cream)",
+  "Not sure what else to put here...",
+  "My favourite colour is blue, could you tell?",
+  "I got into coding cause I wanted to make my own Minecraft mods when I was 12",
+  "I drink a crispy cold can of Monster Ultra most mornings (don't judge me)",
+  "I prefer Coke Zero to any other Coke",
+  "My favourite flowers are Lilies",
+  "I don't like licorice",
+  "I love most genres of music, ask me about it!",
+  "I talk a lot :D",
+  "I can't be bothered writing more facts here",
 ];
 
 export const PHOTOS: Photo[] = [

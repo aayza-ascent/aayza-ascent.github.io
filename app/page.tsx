@@ -8,6 +8,7 @@ import Hobbies from '@/components/Hobbies';
 import Photos from '@/components/Photos';
 import ApiWidget from '@/components/ApiWidget';
 import Guestbook from '@/components/Guestbook';
+import Contact from '@/components/Contact';
 import NowPlaying from '@/components/NowPlaying';
 import ShortcutHelp from '@/components/ShortcutHelp';
 import MouseStars from '@/components/MouseStars';
@@ -26,6 +27,7 @@ export default function Home() {
       <Photos />
       <ApiWidget />
       <Guestbook />
+      <Contact />
       <NowPlaying />
       <ShortcutHelp />
     </>

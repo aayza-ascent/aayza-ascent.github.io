@@ -170,63 +170,6 @@ export default function ApiWidget() {
           </div>
         </div>
 
-        <div id="contact" className="contact-card">
-          <div>
-            <div className="eyebrow" style={{ marginBottom: 6 }}>
-              Let&rsquo;s talk
-            </div>
-            <h3
-              className="serif"
-              style={{
-                fontSize: "clamp(34px, 4vw, 56px)",
-                lineHeight: 1.05,
-                letterSpacing: "-.02em",
-              }}
-            >
-              Got a project that needs a <em>careful engineer</em>?
-            </h3>
-            <p
-              style={{ color: "var(--ink-soft)", maxWidth: 520, marginTop: 14 }}
-            >
-              Open to thoughtful remote roles and consulting. TypeScript, React,
-              full-stack builds, AI-assisted workflows - happy to chat whether
-              you need a hand or a whole team.
-            </p>
-          </div>
-          <div className="row" style={{ gap: 10, marginTop: 24 }}>
-            <a
-              href="mailto:aayzaahmed.wfh@gmail.com"
-              className="btn btn-primary"
-            >
-              aayzaahmed.wfh@gmail.com
-            </a>
-            <a
-              href="https://linkedin.com/in/aayza-ahmed"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn btn-ghost"
-            >
-              linkedin ↗
-            </a>
-            <a
-              href="https://github.com/aayzaahmed"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn btn-ghost"
-            >
-              github ↗
-            </a>
-          </div>
-        </div>
-
-        <footer className="foot">
-          <span className="mono">
-            © 2026 Aayza Ahmed · built remotely from glasgow 🏴󠁧󠁢󠁳󠁣󠁴󠁿
-          </span>
-          <span className="mono" style={{ color: "var(--muted)" }}>
-            last updated · apr 2026
-          </span>
-        </footer>
       </div>
 
       <style jsx>{`
@@ -334,23 +277,6 @@ export default function ApiWidget() {
           to {
             background-position: -200% 0;
           }
-        }
-        .contact-card {
-          margin-top: 100px;
-          padding: 48px;
-          border-radius: var(--radius-lg);
-          background: rgba(96, 165, 250, 0.06);
-          border: 1px solid rgba(96, 165, 250, 0.25);
-        }
-        .foot {
-          margin-top: 100px;
-          padding: var(--space-7) 0;
-          border-top: 1px dashed rgba(255, 255, 255, 0.15);
-          display: flex;
-          justify-content: space-between;
-          flex-wrap: wrap;
-          gap: var(--space-3);
-          font-size: 11px;
         }
       `}</style>
     </section>

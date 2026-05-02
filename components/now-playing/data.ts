@@ -9,19 +9,19 @@ export type Track = {
 
 export const TRACKS: Track[] = [
   {
-    title: "3 Nights",
+    title: "Ant Pile",
     artist: "Dominic Fike",
-    album: "Don't Forget About Me, Demos",
+    album: "Sunburn",
     color: "#FB923C",
-    year: "2018",
+    year: "2023",
     cover: "linear-gradient(135deg,#FB923C 0%, #F472B6 100%)",
   },
   {
-    title: "Stick Season",
+    title: "End of August",
     artist: "Noah Kahan",
-    album: "Stick Season",
+    album: "The Great Divide",
     color: "#D97706",
-    year: "2022",
+    year: "2026",
     cover: "linear-gradient(135deg,#14532D 0%, #D97706 100%)",
   },
   {
@@ -57,7 +57,7 @@ export const TRACKS: Track[] = [
     cover: "linear-gradient(135deg,#450A0A 0%, #DC2626 100%)",
   },
   {
-    title: "Starburster",
+    title: "Favourite",
     artist: "Fontaines D.C.",
     album: "Romance",
     color: "#84CC16",
