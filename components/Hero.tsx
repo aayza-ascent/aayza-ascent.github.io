@@ -1,8 +1,5 @@
 "use client";
 
-import { useRef } from "react";
-import Blobs from "./hero/Blobs";
-
 const STATS: [string, string][] = [
   ["7", "years shipping"],
   ["1st", "class honours"],
@@ -11,40 +8,15 @@ const STATS: [string, string][] = [
 ];
 
 export default function Hero() {
-  const heroRef = useRef<HTMLElement>(null);
-
   return (
     <section
       id="home"
-      ref={heroRef}
       style={{
         minHeight: "100vh",
         padding: "140px 32px 80px",
         position: "relative",
-        overflow: "hidden",
       }}
     >
-      <Blobs containerRef={heroRef} />
-
-      <svg aria-hidden className="hero-grid" width="100%" height="100%">
-        <defs>
-          <pattern
-            id="grid"
-            width="44"
-            height="44"
-            patternUnits="userSpaceOnUse"
-          >
-            <path
-              d="M 44 0 L 0 0 0 44"
-              fill="none"
-              stroke="rgba(255,255,255,.05)"
-              strokeWidth=".5"
-            />
-          </pattern>
-        </defs>
-        <rect width="100%" height="100%" fill="url(#grid)" />
-      </svg>
-
       <div className="container hero-inner">
         <div className="hero-top row">
           <span className="chip mono">glasgow · scotland · remote</span>
@@ -58,7 +30,7 @@ export default function Hero() {
           <span className="line-c serif">
             <em>a software engineer</em> who likes
             <br />
-            building <span className="hl">playful, durable tools.</span>
+            building <span className="hl">durable, well-crafted tools.</span>
           </span>
         </h1>
 
@@ -81,15 +53,9 @@ export default function Hero() {
               />
             </svg>
           </a>
-          <a href="#contact" className="btn btn-ghost">
+          <a href="#api" className="btn btn-ghost">
             Say hi ↗
           </a>
-          <span
-            className="mono"
-            style={{ color: "var(--muted)", marginLeft: "auto", fontSize: 12 }}
-          >
-            move your cursor - the gradient follows
-          </span>
         </div>
 
         <div className="hero-stats">
@@ -102,24 +68,11 @@ export default function Hero() {
         </div>
       </div>
 
-      <div className="scroll-cue mono">
-        scroll
-        <span className="bar" />
-      </div>
-
       <style jsx>{`
         .hero-inner {
           position: relative;
           z-index: 2;
         }
-        :global(.hero-grid) {
-          position: absolute;
-          inset: 0;
-          z-index: 0;
-          pointer-events: none;
-          opacity: 0.8;
-        }
-
         .hero-top {
           margin-top: 40px;
         }
@@ -149,14 +102,10 @@ export default function Hero() {
         }
         :global(.hero-name .name-word) {
           display: inline-block;
-          transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
           padding-right: 0.4em;
         }
         :global(.hero-name .name-word:last-of-type) {
           padding-right: 0;
-        }
-        :global(.hero-name .name-word:hover) {
-          transform: translateY(-6px) rotate(-2deg);
         }
         :global(.hero-name .line-c) {
           display: block;
@@ -167,15 +116,7 @@ export default function Hero() {
           max-width: 880px;
         }
         :global(.hero-name .hl) {
-          background: linear-gradient(
-            180deg,
-            transparent 55%,
-            rgba(255, 138, 184, 0.45) 55%,
-            rgba(255, 138, 184, 0.45) 92%,
-            transparent 92%
-          );
-          padding: 0 0.08em;
-          color: var(--ink);
+          color: var(--accent);
         }
 
         .hero-sub {
@@ -198,25 +139,18 @@ export default function Hero() {
         .hero-stats {
           display: grid;
           grid-template-columns: repeat(4, 1fr);
-          gap: 2px;
           margin-top: 72px;
-          padding: 6px;
           border-radius: var(--radius-lg);
-          background: rgba(26, 22, 48, 0.5);
-          backdrop-filter: blur(12px);
-          border: 0.5px solid var(--ink-08);
-          box-shadow:
-            0 14px 40px var(--scrim-35),
-            inset 0 1px 0 rgba(255, 255, 255, 0.05);
+          border: 1px solid var(--ink-08);
+          background: rgba(17, 32, 58, 0.4);
+          overflow: hidden;
         }
         .stat {
-          padding: 22px 18px;
-          border-radius: 18px;
+          padding: 22px 20px;
           text-align: left;
-          transition: background 0.3s ease;
         }
-        .stat:hover {
-          background: rgba(255, 255, 255, 0.05);
+        .stat + .stat {
+          border-left: 1px solid var(--ink-08);
         }
         .stat-n {
           font-size: clamp(34px, 3vw, 48px);
@@ -231,42 +165,19 @@ export default function Hero() {
           margin-top: var(--space-2);
         }
 
-        .scroll-cue {
-          position: absolute;
-          bottom: var(--space-6);
-          left: 50%;
-          transform: translateX(-50%);
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          gap: 10px;
-          font-size: 10px;
-          letter-spacing: 0.2em;
-          text-transform: uppercase;
-          color: var(--muted);
-        }
-        .scroll-cue .bar {
-          width: 1px;
-          height: 36px;
-          background: linear-gradient(to bottom, transparent, var(--ink-soft));
-          animation: scrollPulse 2.2s ease-in-out infinite;
-        }
-        @keyframes scrollPulse {
-          0%,
-          100% {
-            transform: scaleY(0.5);
-            transform-origin: top;
-            opacity: 0.4;
-          }
-          50% {
-            transform: scaleY(1);
-            opacity: 1;
-          }
-        }
-
         @media (max-width: 720px) {
           .hero-stats {
             grid-template-columns: repeat(2, 1fr);
+          }
+          .stat:nth-child(2) {
+            border-left: 1px solid var(--ink-08);
+          }
+          .stat:nth-child(3),
+          .stat:nth-child(4) {
+            border-top: 1px solid var(--ink-08);
+          }
+          .stat:nth-child(3) {
+            border-left: 0;
           }
         }
       `}</style>

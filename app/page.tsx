@@ -10,10 +10,12 @@ import ApiWidget from '@/components/ApiWidget';
 import Guestbook from '@/components/Guestbook';
 import NowPlaying from '@/components/NowPlaying';
 import ShortcutHelp from '@/components/ShortcutHelp';
+import MouseStars from '@/components/MouseStars';
 
 export default function Home() {
   return (
     <>
+      <MouseStars />
       <TopNav />
       <Hero />
       <Work />

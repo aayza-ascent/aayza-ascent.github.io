@@ -240,11 +240,8 @@ export default function ApiWidget() {
           display: flex;
           flex-direction: column;
           gap: var(--space-6);
-          background: linear-gradient(
-            145deg,
-            rgba(26, 22, 48, 0.85),
-            rgba(14, 11, 26, 0.7)
-          );
+          background: var(--surface);
+          border: 1px solid var(--ink-08);
         }
         .api-meta {
           display: flex;
@@ -280,29 +277,25 @@ export default function ApiWidget() {
         }
         .joke-punch {
           appearance: none;
-          background: rgba(167, 139, 250, 0.12);
-          border: 1px dashed rgba(167, 139, 250, 0.4);
+          background: rgba(96, 165, 250, 0.1);
+          border: 1px dashed rgba(96, 165, 250, 0.4);
           padding: 16px 22px;
           border-radius: 14px;
           cursor: pointer;
           font-family: "JetBrains Mono", monospace;
           font-size: 13px;
-          color: var(--peri);
+          color: var(--accent);
           text-align: left;
-          transition: all 0.3s ease;
+          transition: background 0.2s ease;
           align-self: flex-start;
           max-width: 100%;
         }
         .joke-punch:hover {
-          background: rgba(167, 139, 250, 0.22);
+          background: rgba(96, 165, 250, 0.18);
         }
         .joke-punch.shown {
-          background: linear-gradient(
-            135deg,
-            rgba(110, 231, 183, 0.18),
-            rgba(167, 139, 250, 0.15)
-          );
-          border: 1px solid rgba(110, 231, 183, 0.35);
+          background: rgba(96, 165, 250, 0.08);
+          border: 1px solid rgba(96, 165, 250, 0.3);
           color: var(--ink);
           font-family: "Instrument Serif", serif;
           font-style: italic;
@@ -344,53 +337,10 @@ export default function ApiWidget() {
         }
         .contact-card {
           margin-top: 100px;
-          padding: 56px;
-          border-radius: 30px;
-          background: linear-gradient(
-            135deg,
-            rgba(167, 139, 250, 0.2) 0%,
-            rgba(255, 138, 184, 0.15) 100%
-          );
-          border: 0.5px solid rgba(167, 139, 250, 0.25);
-          box-shadow:
-            0 30px 80px var(--scrim-40),
-            inset 0 1px 0 var(--ink-08);
-          position: relative;
-          overflow: hidden;
-        }
-        .contact-card::before {
-          content: "";
-          position: absolute;
-          right: -80px;
-          top: -80px;
-          width: 300px;
-          height: 300px;
-          border-radius: 50%;
-          background: radial-gradient(
-            circle,
-            rgba(103, 232, 249, 0.35),
-            transparent 70%
-          );
-          opacity: 0.8;
-        }
-        .contact-card::after {
-          content: "";
-          position: absolute;
-          left: -60px;
-          bottom: -60px;
-          width: 240px;
-          height: 240px;
-          border-radius: 50%;
-          background: radial-gradient(
-            circle,
-            rgba(255, 138, 184, 0.3),
-            transparent 70%
-          );
-          opacity: 0.7;
-        }
-        .contact-card > :global(*) {
-          position: relative;
-          z-index: 1;
+          padding: 48px;
+          border-radius: var(--radius-lg);
+          background: rgba(96, 165, 250, 0.06);
+          border: 1px solid rgba(96, 165, 250, 0.25);
         }
         .foot {
           margin-top: 100px;

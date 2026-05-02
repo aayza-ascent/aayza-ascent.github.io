@@ -129,9 +129,9 @@ export default function Photos() {
           z-index: 1;
         }
         .polaroid:hover {
-          transform: rotate(0deg) translateY(-8px) scale(1.03);
+          transform: rotate(var(--rot)) translateY(-4px);
           box-shadow:
-            0 30px 60px rgba(167, 139, 250, 0.3),
+            0 24px 48px var(--scrim-50),
             0 4px 10px var(--scrim-40);
           z-index: 20;
         }
@@ -159,9 +159,9 @@ export default function Photos() {
           right: 0;
           bottom: var(--space-3);
           text-align: center;
-          font-family: "Caveat", "Instrument Serif", cursive;
+          font-family: "Instrument Serif", serif;
           font-style: italic;
-          font-size: 18px;
+          font-size: 16px;
           color: var(--paper-ink);
         }
         .tape {
@@ -219,10 +219,10 @@ export default function Photos() {
         }
         .lb-cap {
           text-align: center;
-          font-size: 28px;
+          font-size: 26px;
           margin-top: var(--space-4);
           font-style: italic;
-          color: #1a1814;
+          color: var(--paper-ink);
         }
         .lb-close,
         .lb-nav {

@@ -36,6 +36,7 @@ export type Tech = {
   color: string;
   ring: TechRing;
   glyph: string;
+  note: string;
 };
 
 export type Hobby = {
@@ -208,19 +209,97 @@ export const PROJECTS: Project[] = [
 ];
 
 export const TECH: Tech[] = [
-  { name: "TypeScript", color: "#3178C6", ring: 0, glyph: "TS" },
-  { name: "JavaScript", color: "#F7DF1E", ring: 0, glyph: "JS" },
-  { name: "React", color: "#61DAFB", ring: 0, glyph: "⚛" },
-  { name: "Node.js", color: "#8CC84B", ring: 0, glyph: "N" },
-  { name: "C# / .NET", color: "#9B4F96", ring: 1, glyph: "C#" },
-  { name: "Python", color: "#3776AB", ring: 1, glyph: "Py" },
-  { name: "SQL Server", color: "#CC2927", ring: 1, glyph: "SQL" },
-  { name: "PostgreSQL", color: "#336791", ring: 1, glyph: "Pg" },
-  { name: "MongoDB", color: "#47A248", ring: 2, glyph: "M" },
-  { name: "Tailwind", color: "#06B6D4", ring: 2, glyph: "TW" },
-  { name: "Figma", color: "#A259FF", ring: 2, glyph: "Fi" },
-  { name: "GraphQL", color: "#E10098", ring: 2, glyph: "◈" },
-  { name: "React Native", color: "#61DAFB", ring: 2, glyph: "RN" },
+  {
+    name: "TypeScript",
+    color: "#3178C6",
+    ring: 0,
+    glyph: "TS",
+    note: "almost everything I write — strict mode, always.",
+  },
+  {
+    name: "React",
+    color: "#61DAFB",
+    ring: 0,
+    glyph: "⚛",
+    note: "the UI for nearly every project on this page.",
+  },
+  {
+    name: "Node.js",
+    color: "#8CC84B",
+    ring: 0,
+    glyph: "N",
+    note: "APIs, scripts, glue code — the back end of choice.",
+  },
+  {
+    name: "Next.js",
+    color: "#FFFFFF",
+    ring: 0,
+    glyph: "N+",
+    note: "the framework behind this very site.",
+  },
+  {
+    name: "C# / .NET",
+    color: "#9B4F96",
+    ring: 1,
+    glyph: "C#",
+    note: "four years of client-shipping at Pulsion.",
+  },
+  {
+    name: "Python",
+    color: "#3776AB",
+    ring: 1,
+    glyph: "Py",
+    note: "scrapers, scripts, the occasional ML notebook.",
+  },
+  {
+    name: "PostgreSQL",
+    color: "#336791",
+    ring: 1,
+    glyph: "Pg",
+    note: "default for new builds — relational, indexed, predictable.",
+  },
+  {
+    name: "SQL Server",
+    color: "#CC2927",
+    ring: 1,
+    glyph: "SQL",
+    note: "earlier work, still fluent in T-SQL.",
+  },
+  {
+    name: "React Native",
+    color: "#61DAFB",
+    ring: 2,
+    glyph: "RN",
+    note: "Expo apps including the multiplayer card-games build.",
+  },
+  {
+    name: "MongoDB",
+    color: "#47A248",
+    ring: 2,
+    glyph: "M",
+    note: "document stores when the schema doesn’t want to settle.",
+  },
+  {
+    name: "Tailwind",
+    color: "#06B6D4",
+    ring: 2,
+    glyph: "TW",
+    note: "fast styling on side projects.",
+  },
+  {
+    name: "Figma",
+    color: "#A259FF",
+    ring: 2,
+    glyph: "Fi",
+    note: "where the design conversation actually happens.",
+  },
+  {
+    name: "GraphQL",
+    color: "#E10098",
+    ring: 2,
+    glyph: "◈",
+    note: "client-side, mostly — Apollo and friends.",
+  },
 ];
 
 export const HOBBIES: Hobby[] = [

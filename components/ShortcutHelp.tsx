@@ -182,8 +182,7 @@ export default function ShortcutHelp() {
           transition: all 0.25s ease;
         }
         .kb-fab:hover {
-          transform: translateY(-2px) scale(1.08);
-          border-color: var(--peri);
+          border-color: var(--accent);
         }
         .kb-hint {
           position: fixed;
@@ -194,30 +193,19 @@ export default function ShortcutHelp() {
           align-items: center;
           gap: 10px;
           padding: 10px 14px;
-          background: linear-gradient(135deg, var(--peri), var(--accent));
-          color: var(--white);
+          background: var(--accent);
+          color: #0a1628;
           border-radius: var(--radius-sm);
           cursor: pointer;
           font-size: 12px;
           font-weight: 500;
-          box-shadow: 0 10px 30px rgba(167, 139, 250, 0.4);
+          box-shadow: 0 8px 20px rgba(96, 165, 250, 0.3);
           animation: kbBounce 0.6s cubic-bezier(0.2, 0.8, 0.2, 1) 0.5s both;
         }
-        .kb-hint::before {
-          content: '';
-          position: absolute;
-          bottom: -5px;
-          left: 18px;
-          width: 10px;
-          height: 10px;
-          background: var(--accent);
-          transform: rotate(45deg);
-          z-index: -1;
-        }
         .kb-hint-x {
-          background: var(--ink-20);
+          background: rgba(0, 0, 0, 0.2);
           border: 0;
-          color: var(--white);
+          color: #0a1628;
           width: 18px;
           height: 18px;
           border-radius: 50%;
@@ -259,8 +247,8 @@ export default function ShortcutHelp() {
           width: 100%;
           max-width: 520px;
           padding: var(--space-8);
-          background: linear-gradient(145deg, var(--surface), var(--surface-2));
-          border: 0.5px solid var(--ink-10);
+          background: var(--surface);
+          border: 1px solid var(--ink-10);
           border-radius: var(--radius-md);
           box-shadow: 0 40px 80px rgba(0, 0, 0, 0.6);
           animation: kbPop 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
@@ -321,11 +309,9 @@ export default function ShortcutHelp() {
           .kb-grid {
             grid-template-columns: 1fr;
           }
-          .kb-fab {
-            bottom: 90px;
-          }
+          .kb-fab,
           .kb-hint {
-            bottom: 140px;
+            display: none;
           }
         }
       `}</style>

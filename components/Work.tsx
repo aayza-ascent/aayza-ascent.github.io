@@ -13,7 +13,7 @@ function WorkItem({ item, open, onToggle }: WorkItemProps) {
   return (
     <div className={`work-card ${open ? 'open' : ''}`}>
       <button className="work-head" onClick={onToggle} aria-expanded={open}>
-        <div className="work-logo" style={{ background: item.color }}>
+        <div className="work-logo">
           <span>{item.logo}</span>
         </div>
         <div className="work-head-main">
@@ -60,15 +60,13 @@ function WorkItem({ item, open, onToggle }: WorkItemProps) {
       <style jsx>{`
         .work-card {
           border-radius: var(--radius-md);
-          background: linear-gradient(145deg, var(--surface), var(--surface-2));
-          box-shadow: 10px 10px 30px var(--scrim-40), inset 0 1px 0 rgba(255, 255, 255, 0.05);
-          border: 0.5px solid var(--ink-06);
+          background: var(--surface);
+          border: 1px solid var(--ink-08);
           overflow: hidden;
-          transition: all 0.3s ease;
+          transition: border-color 0.2s ease;
         }
         .work-card.open {
-          box-shadow: 14px 14px 40px var(--scrim-50), inset 0 1px 0 var(--ink-08);
-          border-color: rgba(167, 139, 250, 0.25);
+          border-color: rgba(96, 165, 250, 0.4);
         }
         .work-head {
           display: flex;
@@ -84,16 +82,17 @@ function WorkItem({ item, open, onToggle }: WorkItemProps) {
           font: inherit;
         }
         .work-logo {
-          width: 52px;
-          height: 52px;
-          border-radius: 14px;
+          width: 44px;
+          height: 44px;
+          border-radius: 10px;
           display: grid;
           place-items: center;
           font-family: 'Instrument Serif', serif;
-          font-size: 24px;
-          color: var(--white);
+          font-size: 20px;
+          color: var(--accent);
+          background: rgba(96, 165, 250, 0.1);
+          border: 1px solid rgba(96, 165, 250, 0.25);
           flex-shrink: 0;
-          box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.3), 0 6px 16px var(--scrim-40);
         }
         .work-head-main {
           flex: 1;
@@ -155,7 +154,7 @@ function WorkItem({ item, open, onToggle }: WorkItemProps) {
           line-height: 1.5;
         }
         .work-highlights .tick {
-          color: var(--peri);
+          color: var(--accent);
           font-weight: 700;
           flex-shrink: 0;
         }
@@ -195,7 +194,7 @@ export default function Work() {
           <div className="rail" aria-hidden />
           {WORK.map((w, i) => (
             <div className="timeline-row" key={w.company}>
-              <div className="node" style={{ background: w.color }} />
+              <div className="node" />
               <WorkItem item={w} open={open === i} onToggle={() => setOpen(open === i ? -1 : i)} />
             </div>
           ))}
@@ -212,8 +211,8 @@ export default function Work() {
           left: 10px;
           top: 12px;
           bottom: 12px;
-          width: 2px;
-          background: linear-gradient(to bottom, var(--peri), rgba(167, 139, 250, 0.3) 40%, transparent);
+          width: 1px;
+          background: var(--ink-10);
         }
         .timeline-row {
           position: relative;
@@ -221,13 +220,14 @@ export default function Work() {
         }
         .timeline-row .node {
           position: absolute;
-          left: -36px;
-          top: 22px;
-          width: 14px;
-          height: 14px;
+          left: -34px;
+          top: 24px;
+          width: 10px;
+          height: 10px;
           border-radius: 50%;
-          border: 3px solid var(--cream);
-          box-shadow: 0 0 0 1px var(--ink-10), 0 0 20px currentColor, 0 4px 10px var(--scrim-40);
+          background: var(--accent);
+          border: 2px solid var(--cream);
+          box-shadow: 0 0 0 1px var(--ink-10);
         }
       `}</style>
     </section>
