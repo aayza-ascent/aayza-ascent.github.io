@@ -209,12 +209,20 @@ export default function ApiWidget() {
               linkedin ↗
             </a>
             <a
-              href="https://github.com/aayzaahmed"
+              href="https://github.com/aayza-ascent"
               target="_blank"
               rel="noopener noreferrer"
               className="btn btn-ghost"
             >
               github ↗
+            </a>
+            <a
+              href="/Aayza_CV_Public.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn btn-ghost"
+            >
+              download cv ↓
             </a>
           </div>
         </div>

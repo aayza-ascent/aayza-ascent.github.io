@@ -3,6 +3,7 @@ import Hero from '@/components/Hero';
 import Work from '@/components/Work';
 import LiveSites from '@/components/LiveSites';
 import Projects from '@/components/Projects';
+import GithubGraph from '@/components/GithubGraph';
 import TechStack from '@/components/TechStack';
 import Hobbies from '@/components/Hobbies';
 import Photos from '@/components/Photos';
@@ -21,6 +22,7 @@ export default function Home() {
       <Work />
       <LiveSites />
       <Projects />
+      <GithubGraph />
       <TechStack />
       <Hobbies />
       <Photos />
