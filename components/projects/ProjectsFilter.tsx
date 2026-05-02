@@ -59,10 +59,9 @@ export default function ProjectsFilter({
           color: var(--ink);
         }
         .filter-pill.on {
-          background: linear-gradient(135deg, var(--peri), var(--accent));
-          color: var(--white);
+          background: var(--accent);
+          color: #0a1628;
           border-color: transparent;
-          box-shadow: 0 8px 24px rgba(167, 139, 250, 0.35);
         }
         .filter-pill .count {
           font-family: "JetBrains Mono", monospace;

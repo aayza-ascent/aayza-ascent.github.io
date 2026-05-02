@@ -1,23 +1,20 @@
 :root {
-  --cream: #0E0B1A;
-  --cream-2: #151228;
-  --surface: #1A1630;
-  --surface-2: #221C3E;
-  --ink: #F5F1EA;
-  --ink-soft: #B8B0C7;
-  --muted: #7A7391;
-  --peri: #A78BFA;
-  --blush: #FF8AB8;
-  --mint: #6EE7B7;
-  --lemon: #FBBF24;
-  --cyan: #67E8F9;
-  --accent: #FF6B9D;
+  --cream: #0A1628;
+  --cream-2: #0E1B30;
+  --surface: #11203A;
+  --surface-2: #152944;
+  --ink: #E6ECF5;
+  --ink-soft: #A6B5CC;
+  --muted: #7B8AA3;
+
+  --accent: #60A5FA;
+  --accent-soft: #3B82F6;
 
   --white: #ffffff;
-  --paper: #f5f1ea;
-  --paper-ink: #4a4538;
-  --tape: rgba(234, 210, 140, 0.5);
-  --lightbox-bg: rgba(20, 18, 14, 0.75);
+  --paper: #E6ECF5;
+  --paper-ink: #11203A;
+  --tape: rgba(96, 165, 250, 0.35);
+  --lightbox-bg: rgba(10, 22, 40, 0.85);
 
   --ink-04: rgba(255, 255, 255, 0.04);
   --ink-06: rgba(255, 255, 255, 0.06);
@@ -49,10 +46,10 @@
   --radius-xl: 28px;
   --radius-pill: 999px;
 
-  --shadow-soft: 20px 20px 50px rgba(0, 0, 0, 0.55), -8px -8px 28px rgba(167, 139, 250, 0.06);
-  --shadow-inset: inset 4px 4px 10px rgba(0, 0, 0, 0.4), inset -4px -4px 10px rgba(255, 255, 255, 0.04);
-  --glass: rgba(26, 22, 48, 0.55);
-  --glass-border: rgba(255, 255, 255, 0.08);
+  --shadow-soft: 0 18px 40px rgba(0, 0, 0, 0.45);
+  --shadow-inset: inset 0 1px 0 rgba(255, 255, 255, 0.04);
+  --glass: rgba(17, 32, 58, 0.6);
+  --glass-border: rgba(255, 255, 255, 0.06);
   --radius: var(--radius-lg);
   --motion: 1;
 
@@ -68,7 +65,6 @@
 
 html,
 body {
-  background: var(--cream);
   color: var(--ink);
   font-family: 'Inter', system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -76,9 +72,22 @@ body {
   scroll-behavior: smooth;
 }
 
+html {
+  background: var(--cream);
+}
+
 body {
   line-height: 1.5;
-  padding-bottom: 110px;
+  padding-bottom: 56px;
+  background-image:
+    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='320' height='320' viewBox='0 0 320 320'><circle cx='24' cy='30' r='1' fill='white' opacity='0.45'/><circle cx='67' cy='88' r='1' fill='white' opacity='0.3'/><circle cx='112' cy='40' r='1.2' fill='white' opacity='0.5'/><circle cx='158' cy='110' r='1' fill='%2360A5FA' opacity='0.55'/><circle cx='200' cy='56' r='1' fill='white' opacity='0.35'/><circle cx='35' cy='165' r='1' fill='white' opacity='0.3'/><circle cx='92' cy='200' r='1.4' fill='white' opacity='0.5'/><circle cx='175' cy='230' r='1' fill='%2360A5FA' opacity='0.4'/><circle cx='250' cy='150' r='1' fill='white' opacity='0.35'/><circle cx='280' cy='280' r='1' fill='white' opacity='0.4'/></svg>"),
+    radial-gradient(ellipse 1100px 700px at 50% -10%, rgba(96, 165, 250, 0.12), transparent 60%),
+    radial-gradient(ellipse 900px 600px at 100% 35%, rgba(59, 130, 246, 0.07), transparent 55%),
+    radial-gradient(ellipse 800px 500px at 0% 75%, rgba(96, 165, 250, 0.06), transparent 55%),
+    linear-gradient(180deg, var(--cream) 0%, #0C1A30 100%);
+  background-repeat: repeat, no-repeat, no-repeat, no-repeat, no-repeat;
+  background-size: 320px 320px, auto, auto, auto, auto;
+  background-attachment: fixed;
 }
 
 .serif {
@@ -96,34 +105,8 @@ em.serif {
 }
 
 ::selection {
-  background: var(--peri);
-  color: var(--white);
-}
-
-body::before {
-  content: '';
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  z-index: 1000;
-  opacity: 0.08;
-  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='200' height='200' filter='url(%23n)'/></svg>");
-  mix-blend-mode: screen;
-}
-
-body::after {
-  content: '';
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  z-index: 999;
-  background: radial-gradient(circle at 50% 0%, rgba(167, 139, 250, 0.12), transparent 60%),
-    radial-gradient(circle at 100% 100%, rgba(255, 138, 184, 0.08), transparent 50%);
-}
-
-#__next {
-  position: relative;
-  z-index: 1;
+  background: var(--accent);
+  color: #0A1628;
 }
 
 nav.top {
@@ -162,9 +145,9 @@ nav.top a:hover {
 }
 
 nav.top a.active {
-  background: linear-gradient(135deg, var(--peri), var(--accent));
-  color: var(--white);
-  box-shadow: 0 4px 16px rgba(167, 139, 250, 0.4);
+  background: var(--accent);
+  color: #0A1628;
+  box-shadow: 0 4px 12px rgba(96, 165, 250, 0.25);
 }
 
 nav.top .dot {
@@ -219,7 +202,7 @@ h2.section-title {
 }
 
 :focus-visible {
-  outline: 2px solid var(--peri);
+  outline: 2px solid var(--accent);
   outline-offset: 3px;
   border-radius: 4px;
 }
@@ -256,14 +239,14 @@ h2.section-title {
 }
 
 .btn-primary {
-  background: linear-gradient(135deg, var(--peri), var(--accent));
-  color: var(--white);
-  box-shadow: 0 8px 24px rgba(167, 139, 250, 0.35), inset 0 1px 0 var(--ink-20);
+  background: var(--accent);
+  color: #0A1628;
+  box-shadow: 0 6px 16px rgba(96, 165, 250, 0.25);
 }
 
 .btn-primary:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 14px 32px rgba(167, 139, 250, 0.5), inset 0 1px 0 var(--ink-20);
+  background: var(--accent-soft);
+  color: var(--white);
 }
 
 .btn-ghost {
@@ -322,13 +305,13 @@ h2.section-title {
 
 @keyframes kbFlash {
   0% {
-    box-shadow: inset 0 0 0 0 rgba(167, 139, 250, 0);
+    box-shadow: inset 0 0 0 0 rgba(96, 165, 250, 0);
   }
   30% {
-    box-shadow: inset 0 0 0 3px rgba(167, 139, 250, 0.5);
+    box-shadow: inset 0 0 0 3px rgba(96, 165, 250, 0.45);
   }
   100% {
-    box-shadow: inset 0 0 0 0 rgba(167, 139, 250, 0);
+    box-shadow: inset 0 0 0 0 rgba(96, 165, 250, 0);
   }
 }
 
@@ -337,26 +320,7 @@ h2.section-title {
     padding: var(--space-16) var(--space-5);
   }
   nav.top {
-    top: 12px;
-    left: var(--space-2);
-    right: var(--space-2);
-    transform: none;
-    max-width: calc(100vw - 16px);
-    padding: var(--space-1);
-    gap: 2px;
-    overflow-x: auto;
-    justify-content: flex-start;
-    scrollbar-width: none;
-    -ms-overflow-style: none;
-  }
-  nav.top::-webkit-scrollbar {
     display: none;
-  }
-  nav.top a {
-    padding: 6px var(--space-3);
-    font-size: 12px;
-    flex: 0 0 auto;
-    white-space: nowrap;
   }
 }
 

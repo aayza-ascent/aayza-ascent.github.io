@@ -13,33 +13,19 @@ function FlipCard({ h }: { h: Hobby }) {
     >
       <div className="flip-inner">
         <div className="face front">
-          <div
-            className="emoji-wrap"
-            style={{
-              background: `radial-gradient(circle, ${h.color}44, transparent)`,
-            }}
-          >
+          <div className="emoji-wrap">
             <div className="emoji">{h.emoji}</div>
           </div>
           <div>
-            <div className="flip-label serif" style={{ color: h.color }}>
-              {h.front}
-            </div>
+            <div className="flip-label serif">{h.front}</div>
             <div className="flip-hint mono" style={{ marginTop: 8 }}>
               tap to flip
             </div>
           </div>
         </div>
-        <div
-          className="face back"
-          style={{
-            background: `linear-gradient(145deg, ${h.color}, ${h.color}CC)`,
-          }}
-        >
+        <div className="face back">
           <p>{h.back}</p>
-          <div className="flip-hint mono" style={{ color: "rgba(0,0,0,.45)" }}>
-            tap to flip back
-          </div>
+          <div className="flip-hint mono back-hint">tap to flip back</div>
         </div>
       </div>
       <style jsx>{`
@@ -73,33 +59,34 @@ function FlipCard({ h }: { h: Hobby }) {
           justify-content: space-between;
           backface-visibility: hidden;
           -webkit-backface-visibility: hidden;
-          border: 0.5px solid var(--ink-08);
-          box-shadow:
-            10px 10px 30px var(--scrim-40),
-            inset 0 1px 0 rgba(255, 255, 255, 0.05);
+          border: 1px solid var(--ink-08);
           text-align: left;
         }
         .front {
-          background: linear-gradient(145deg, var(--surface), var(--surface-2));
+          background: var(--surface);
           color: var(--ink);
         }
         .back {
           transform: rotateY(180deg);
-          color: var(--cream);
+          background: rgba(96, 165, 250, 0.08);
+          border-color: rgba(96, 165, 250, 0.3);
+          color: var(--ink);
         }
         .back :global(p) {
           font-family: "Instrument Serif", serif;
-          font-size: 22px;
-          line-height: 1.25;
+          font-size: 20px;
+          line-height: 1.3;
           font-style: italic;
         }
+        .back-hint {
+          color: var(--ink-soft);
+        }
         .emoji {
-          font-size: 42px;
+          font-size: 38px;
           line-height: 1;
-          filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.4));
         }
         .flip-label {
-          font-size: 28px;
+          font-size: 26px;
           line-height: 1;
           color: var(--ink);
         }
@@ -107,15 +94,16 @@ function FlipCard({ h }: { h: Hobby }) {
           font-size: 10px;
           letter-spacing: 0.15em;
           text-transform: uppercase;
-          color: rgba(255, 255, 255, 0.4);
+          color: var(--muted);
         }
         .emoji-wrap {
-          width: 80px;
-          height: 80px;
+          width: 64px;
+          height: 64px;
           border-radius: var(--radius-md);
           display: grid;
           place-items: center;
-          filter: blur(0);
+          background: rgba(96, 165, 250, 0.08);
+          border: 1px solid rgba(96, 165, 250, 0.18);
         }
       `}</style>
     </button>
@@ -193,12 +181,8 @@ export default function Hobbies() {
           gap: var(--space-6);
           padding: var(--space-7) var(--space-8);
           flex-wrap: wrap;
-          background: linear-gradient(
-            135deg,
-            rgba(167, 139, 250, 0.1),
-            rgba(255, 138, 184, 0.08)
-          );
-          border: 0.5px solid rgba(167, 139, 250, 0.2);
+          background: rgba(96, 165, 250, 0.06);
+          border: 1px solid rgba(96, 165, 250, 0.2);
         }
         .facts-left {
           flex: 1;

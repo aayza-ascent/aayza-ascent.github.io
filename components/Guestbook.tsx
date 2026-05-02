@@ -10,76 +10,73 @@ import {
 
 const GRID_COLS = 48;
 const GRID_ROWS = 24;
-// Palette is intentionally hex (not var() refs) because it is content the user
-// paints with — values flow through inline `style` attributes for each swatch.
-// First five mirror design tokens (--accent, --peri, --mint, --lemon, --cyan).
 const COLORS = [
-  "#FF6B9D",
-  "#A78BFA",
-  "#6EE7B7",
-  "#FBBF24",
-  "#67E8F9",
-  "#FB923C",
-  "#F472B6",
-  "#C084FC",
+  "#60A5FA",
+  "#3B82F6",
+  "#0EA5E9",
+  "#7DD3FC",
+  "#A5B4FC",
   "#34D399",
-  "#F0ABFC",
+  "#FBBF24",
+  "#F472B6",
+  "#FB7185",
+  "#FACC15",
   "#FFFFFF",
-  "#1A1630",
+  "#11203A",
 ];
 
 const SEED: [number, number, string][] = [
-  [6, 10, "#A78BFA"],
-  [6, 11, "#A78BFA"],
-  [7, 9, "#A78BFA"],
-  [7, 12, "#A78BFA"],
-  [8, 8, "#A78BFA"],
-  [8, 9, "#A78BFA"],
-  [8, 10, "#A78BFA"],
-  [8, 11, "#A78BFA"],
-  [8, 12, "#A78BFA"],
-  [8, 13, "#A78BFA"],
-  [9, 8, "#A78BFA"],
-  [9, 13, "#A78BFA"],
-  [10, 8, "#A78BFA"],
-  [10, 13, "#A78BFA"],
-  [6, 16, "#FF6B9D"],
-  [6, 17, "#FF6B9D"],
-  [7, 15, "#FF6B9D"],
-  [7, 18, "#FF6B9D"],
-  [8, 14, "#FF6B9D"],
-  [8, 15, "#FF6B9D"],
-  [8, 16, "#FF6B9D"],
-  [8, 17, "#FF6B9D"],
-  [8, 18, "#FF6B9D"],
-  [8, 19, "#FF6B9D"],
-  [9, 14, "#FF6B9D"],
-  [9, 19, "#FF6B9D"],
-  [10, 14, "#FF6B9D"],
-  [10, 19, "#FF6B9D"],
-  [14, 30, "#FF6B9D"],
-  [14, 32, "#FF6B9D"],
-  [15, 29, "#FF6B9D"],
-  [15, 30, "#FF6B9D"],
-  [15, 31, "#FF6B9D"],
-  [15, 32, "#FF6B9D"],
-  [15, 33, "#FF6B9D"],
-  [16, 29, "#FF6B9D"],
-  [16, 30, "#FF6B9D"],
-  [16, 31, "#FF6B9D"],
-  [16, 32, "#FF6B9D"],
-  [16, 33, "#FF6B9D"],
-  [17, 30, "#FF6B9D"],
-  [17, 31, "#FF6B9D"],
-  [17, 32, "#FF6B9D"],
-  [18, 31, "#FF6B9D"],
+  [6, 10, "#60A5FA"],
+  [6, 11, "#60A5FA"],
+  [7, 9, "#60A5FA"],
+  [7, 12, "#60A5FA"],
+  [8, 8, "#60A5FA"],
+  [8, 9, "#60A5FA"],
+  [8, 10, "#60A5FA"],
+  [8, 11, "#60A5FA"],
+  [8, 12, "#60A5FA"],
+  [8, 13, "#60A5FA"],
+  [9, 8, "#60A5FA"],
+  [9, 13, "#60A5FA"],
+  [10, 8, "#60A5FA"],
+  [10, 13, "#60A5FA"],
+  [6, 16, "#7DD3FC"],
+  [6, 17, "#7DD3FC"],
+  [7, 15, "#7DD3FC"],
+  [7, 18, "#7DD3FC"],
+  [8, 14, "#7DD3FC"],
+  [8, 15, "#7DD3FC"],
+  [8, 16, "#7DD3FC"],
+  [8, 17, "#7DD3FC"],
+  [8, 18, "#7DD3FC"],
+  [8, 19, "#7DD3FC"],
+  [9, 14, "#7DD3FC"],
+  [9, 19, "#7DD3FC"],
+  [10, 14, "#7DD3FC"],
+  [10, 19, "#7DD3FC"],
+  [14, 30, "#FFFFFF"],
+  [14, 32, "#FFFFFF"],
+  [15, 29, "#FFFFFF"],
+  [15, 30, "#FFFFFF"],
+  [15, 31, "#FFFFFF"],
+  [15, 32, "#FFFFFF"],
+  [15, 33, "#FFFFFF"],
+  [16, 29, "#FFFFFF"],
+  [16, 30, "#FFFFFF"],
+  [16, 31, "#FFFFFF"],
+  [16, 32, "#FFFFFF"],
+  [16, 33, "#FFFFFF"],
+  [17, 30, "#FFFFFF"],
+  [17, 31, "#FFFFFF"],
+  [17, 32, "#FFFFFF"],
+  [18, 31, "#FFFFFF"],
   [2, 4, "#FBBF24"],
   [3, 5, "#FBBF24"],
   [2, 6, "#FBBF24"],
-  [19, 42, "#6EE7B7"],
-  [20, 41, "#6EE7B7"],
-  [20, 43, "#6EE7B7"],
-  [21, 42, "#6EE7B7"],
+  [19, 42, "#34D399"],
+  [20, 41, "#34D399"],
+  [20, 43, "#34D399"],
+  [21, 42, "#34D399"],
 ];
 
 type PixelMap = Record<string, string>;
@@ -317,7 +314,7 @@ export default function Guestbook() {
               <span className="mono gb-stat-label">YOUR STROKES</span>
               <span
                 className="serif gb-stat-value"
-                style={{ color: "var(--mint)" }}
+                style={{ color: "var(--accent)" }}
               >
                 {recentCount}
               </span>
@@ -356,9 +353,8 @@ export default function Guestbook() {
         .gb-tools {
           padding: 14px 18px;
           border-radius: var(--radius-md);
-          background: linear-gradient(145deg, var(--surface), var(--surface-2));
-          border: 0.5px solid var(--ink-06);
-          box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+          background: var(--surface);
+          border: 1px solid var(--ink-08);
         }
         .gb-tools-row {
           display: flex;
@@ -409,9 +405,9 @@ export default function Guestbook() {
           color: var(--ink);
         }
         .gb-tool.active {
-          background: var(--peri);
-          color: var(--white);
-          border-color: var(--peri);
+          background: var(--accent);
+          color: #0a1628;
+          border-color: var(--accent);
         }
         .gb-tool.danger:hover {
           background: rgba(239, 68, 68, 0.15);
@@ -424,11 +420,8 @@ export default function Guestbook() {
           aspect-ratio: ${GRID_COLS} / ${GRID_ROWS};
           border-radius: var(--radius-md);
           overflow: hidden;
-          background: linear-gradient(145deg, #0a0716, #14102a);
-          box-shadow:
-            inset 0 0 0 1px var(--ink-06),
-            inset 0 2px 20px var(--scrim-50),
-            0 20px 60px var(--scrim-40);
+          background: #06101F;
+          border: 1px solid var(--ink-08);
           touch-action: none;
           user-select: none;
         }
@@ -479,9 +472,9 @@ export default function Guestbook() {
           gap: var(--space-8);
           align-items: center;
           padding: 14px 18px;
-          background: linear-gradient(145deg, var(--surface), var(--surface-2));
+          background: var(--surface);
           border-radius: var(--radius-md);
-          border: 0.5px solid var(--ink-06);
+          border: 1px solid var(--ink-08);
           flex-wrap: wrap;
         }
         .gb-stat {
