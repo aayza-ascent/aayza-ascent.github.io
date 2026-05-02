@@ -56,6 +56,14 @@ export default function Hero() {
           <a href="#api" className="btn btn-ghost">
             Say hi ↗
           </a>
+          <a
+            href="/Aayza_CV_Public.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn btn-ghost"
+          >
+            Download CV ↓
+          </a>
         </div>
 
         <div className="hero-stats">

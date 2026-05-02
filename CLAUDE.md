@@ -27,7 +27,7 @@ npm run typecheck    # tsc --noEmit
 - **`components/*.tsx`** - one client component per section (all marked `'use client'`). Each component keeps its own section-scoped CSS inside a `styled-jsx` `<style jsx>` block. Use `:global(...)` selectors when styling a child that's rendered inside a global class (see `Projects.tsx` for examples).
 - **`components/TopNav.tsx`** - also exports two hooks: `useScrollReveal` (adds `.reveal` + `.in` to `<section>`s as they enter view) and `useActiveSection` (drives the nav pill's active state via an IntersectionObserver). `TopNav` calls `useScrollReveal` itself, so the scroll-reveal behavior is guaranteed for every section without per-component setup.
 - **`lib/data.ts`** - fully typed replacement for the prototype's `window.WORK/PROJECTS/TECH/HOBBIES/FACTS/PHOTOS/LIVE_SITES` globals. Treat this as the canonical CV/content; editing copy means editing this file.
-- **`public/cv.pdf`** - the downloadable CV, linked from `ApiWidget`'s contact card.
+- **`public/Aayza_CV_Public.pdf`** - the downloadable CV, linked from `ApiWidget`'s contact card.
 - **`public/.nojekyll`** - empty file that tells GitHub Pages not to run Jekyll processing on the exported site.
 
 ### Key conventions
